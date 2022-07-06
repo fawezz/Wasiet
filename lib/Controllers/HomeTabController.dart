@@ -9,6 +9,13 @@ class HomeTabController extends GetxController with GetSingleTickerProviderState
     selectedTabIndex.value = controller.index;
   }
 
+  var navBarIndex = 0 .obs;
+  void updateNavBarIndex(int x) {
+    navBarIndex.value = x;
+    //navigate to index page
+  }
+
+
   late TabController controller;
 
   @override

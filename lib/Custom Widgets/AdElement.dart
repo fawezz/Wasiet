@@ -11,7 +11,17 @@ class AdElement extends StatelessWidget {
           Container(
             child: Stack(
               children: [
+                Container(  //image
+                  height: 80,
+                  width: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(45),
+                    ),
+                ),
+                FloatingActionButton(
+                  //child: image,
 
+                    onPressed: null)
               ],
             ),
           ),
@@ -20,10 +30,33 @@ class AdElement extends StatelessWidget {
               Row(
                 children: [
                   //categorie
-                  //heart icon
+                  Container(
+                    height: 20,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    //color: ,
+                    child: Text("Rent",
+                    style: TextStyle(),
+                    ),
+                  ),
+                    // if liked
+                  Image.asset("assets/icons/filledHeart.png"),
+                     //else
+                  Image.asset("assets/icons/outlineHeart.png"),
+                  Spacer(),
                   //star
+                  Image.asset("assets/icons/star.png"),
                   //rating
+                  Text("4.5",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+
                   //number of raters
+                  Text("(12)",
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                  )
                 ],
               ),
               Text("5 floors villa",
