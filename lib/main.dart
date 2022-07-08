@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Views/HomeView.dart';
+import 'Views/HomeNavigationView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Wasiet',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomeView(),
+      home: const HomeNavigationView(),
       getPages: [
-        GetPage(name: '/home', page: () => const HomeView()),
+        GetPage(name: '/home', page: () => const HomeNavigationView()),
       ],
     );
   }
