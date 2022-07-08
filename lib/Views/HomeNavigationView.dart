@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'dart:ui' as ui;
 import 'package:wasiet/Views/HomeView.dart';
+import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/TestScreen1.dart';
 
 import 'TestScreen2.dart';
@@ -29,7 +31,7 @@ class HomeNavigationView extends StatelessWidget {
               center: Alignment.centerRight,
               radius: 0.9,
             ),
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
+            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25)),
         ),
         child: Stack(
           children: [
@@ -38,6 +40,7 @@ class HomeNavigationView extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               children: const [
                 HomeView(),
+                MyAdsView(),
                 TestScreen1(),
                 TestScreen2(),
                 //mes annonces
@@ -51,21 +54,21 @@ class HomeNavigationView extends StatelessWidget {
                 left: 0,
                 child: Container(
                   width: size.width,
-                  height: 80,
+                  height: 100.h,
                   child: Stack(
                     children: [
                       Positioned(
                         bottom: 0,
                         left: 0,
                         child: CustomPaint(
-                          size: Size(size.width, 50),
+                          size: Size(size.width, 55.h),
                           painter: navBarCustomPainter(),
                         ),
                       ),
                       Center(
-                        heightFactor: 0.6,
+                        heightFactor: 0.7,
                         child: Container(
-                          height: 100,
+                          height: 100.h,
                           width: 100,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
@@ -78,12 +81,14 @@ class HomeNavigationView extends StatelessWidget {
                             ]
                           ),
                           child: Center(
-                            heightFactor: 0.6,
-                            child: FloatingActionButton.large(
-                                backgroundColor: HexColor("#00B4EF"),
-                                child: Icon(Icons.add),
-                                elevation: 0.1,
-                                onPressed: () {}),
+                            child: SizedBox(
+                              height: 80.sp,
+                              child: FloatingActionButton.large(
+                                  backgroundColor: HexColor("#00B4EF"),
+                                  child: Icon(Icons.add),
+                                  elevation: 0.1,
+                                  onPressed: () {}),
+                            ),
                           ),
                         ),
                       ),
@@ -91,17 +96,20 @@ class HomeNavigationView extends StatelessWidget {
                         bottom: 0,
                         child: SizedBox(
                           width: size.width,
-                          height: 70,
+                          height: 90.h,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Column(
                                 children: [
-                                  Obx(()=> IconButton(
-                                      icon: _navx.navBarIndex.value == 0 ? Image.asset("assets/icons/home_active.png") :
-                                      Image.asset("assets/icons/home.png"),
-                                      onPressed: () =>
-                                          _navx.updateNavBarIndex(0)
+                                  Obx(()=> SizedBox(
+                                    height: 60.sp,
+                                    child: IconButton(
+                                        icon: _navx.navBarIndex.value == 0 ? Image.asset("assets/icons/home_active.png") :
+                                        Image.asset("assets/icons/home.png"),
+                                        onPressed: () =>
+                                            _navx.updateNavBarIndex(0)
+                                    ),
                                   ),
                                   ),
                                   Obx(()=> Container(
@@ -118,13 +126,16 @@ class HomeNavigationView extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Obx(()=> IconButton(
-                                    //iconSize: navIconSize,
-                                      icon: _navx.navBarIndex.value == 1 ? Image.asset("assets/icons/annonce_active.png") :
-                                      Image.asset("assets/icons/annonce.png"),
-                                      onPressed: () {
-                                        _navx.updateNavBarIndex(1);
-                                      }),
+                                  Obx(()=> SizedBox(
+                                    height: 60.sp,
+                                    child: IconButton(
+                                      //iconSize: navIconSize,
+                                        icon: _navx.navBarIndex.value == 1 ? Image.asset("assets/icons/annonce_active.png") :
+                                        Image.asset("assets/icons/annonce.png"),
+                                        onPressed: () {
+                                          _navx.updateNavBarIndex(1);
+                                        }),
+                                  ),
                                   ),
                                   Obx(()=> Container(
                                     height: 5,
@@ -143,12 +154,15 @@ class HomeNavigationView extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Obx(()=> IconButton(
-                                      icon: _navx.navBarIndex.value == 2 ? Image.asset("assets/icons/chat_active.png") :
-                                      Image.asset("assets/icons/chat.png"),
-                                      onPressed: () {
-                                        _navx.updateNavBarIndex(2);
-                                      }),
+                                  Obx(()=> SizedBox(
+                                    height: 60.sp,
+                                    child: IconButton(
+                                        icon: _navx.navBarIndex.value == 2 ? Image.asset("assets/icons/chat_active.png") :
+                                        Image.asset("assets/icons/chat.png"),
+                                        onPressed: () {
+                                          _navx.updateNavBarIndex(2);
+                                        }),
+                                  ),
                                   ),
                                   Obx(()=> Container(
                                     height: 5,
@@ -164,13 +178,16 @@ class HomeNavigationView extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Obx(()=> IconButton(
-                                    icon: _navx.navBarIndex.value == 3 ? Image.asset("assets/icons/profile_active.png") :
-                                    Image.asset("assets/icons/profile.png"),
-                                    onPressed: () {
-                                      _navx.updateNavBarIndex(3);
-                                    },
-                                    splashColor: Colors.white,
+                                  Obx(()=> SizedBox(
+                                    height: 60.sp,
+                                    child: IconButton(
+                                      icon: _navx.navBarIndex.value == 3 ? Image.asset("assets/icons/profile_active.png") :
+                                      Image.asset("assets/icons/profile.png"),
+                                      onPressed: () {
+                                        _navx.updateNavBarIndex(3);
+                                      },
+                                      splashColor: Colors.white,
+                                    ),
                                   ),
                                   ),
                                   Obx(()=> Container(
@@ -193,8 +210,7 @@ class HomeNavigationView extends StatelessWidget {
                   ),
                 )
             ),
-
-              ],
+          ],
         ),
       ),
     ));

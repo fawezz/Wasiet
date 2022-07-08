@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Custom%20Widgets/AdElement.dart';
@@ -15,6 +16,9 @@ class HomeView extends StatelessWidget {
     final HomeTabController _tabx = Get.put(HomeTabController());
     Size size = MediaQuery.of(context).size;
 
+    const double tabw = 90;
+    const double tabh = 50;
+    const tabfontsize = 22;
     return Column(
       children: [
         Padding(
@@ -23,25 +27,36 @@ class HomeView extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/icons/logo_bar.png',
-                width: 100.0,
-                height: 100.0,
+                width: size.width*0.18,
+                height: size.width*0.18,
               ),
               const Spacer(),
-              IconButton(
-                icon: Image.asset(
-                  'assets/icons/bell.png',
-                  fit: BoxFit.fill,
+              FittedBox(
+                child: SizedBox(
+                  height: 60.sp,
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/icons/bell.png',
+                      fit: BoxFit.fill,
+                    ),
+                    iconSize: 30.sp,
+                    onPressed: null,
+                  ),
                 ),
-                iconSize: 10,
-                onPressed: null,
               ),
               const SizedBox(width: 15),
-              IconButton(
-                icon: Image.asset(
-                  'assets/icons/settings.png',
-                  fit: BoxFit.contain,
+              FittedBox(
+                child: SizedBox(
+                  height: 60.sp,
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/icons/settings.png',
+                      fit: BoxFit.fill,
+                    ),
+                    iconSize: size.width * 0.05,
+                    onPressed: () {},
+                  ),
                 ),
-                onPressed: () {},
               ),
             ],
           ),
@@ -51,13 +66,13 @@ class HomeView extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding:  EdgeInsets.only(left: 30.sp),
                 child: SizedBox(
-                  width: size.width * 0.7,
-                  height: 50,
+                  width: size.width * 0.65,
+                  height: size.width * 0.13,
                   child: TextField(
                     style: const TextStyle(
-                        fontSize: 16.0, color: Colors.black),
+                        fontSize: 14.0, color: Colors.black,),
                     decoration: InputDecoration(
                       hintText: "search for something",
                       border: OutlineInputBorder(
@@ -73,7 +88,7 @@ class HomeView extends StatelessWidget {
               ),
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.only(right: 30),
+                padding:  EdgeInsets.only(right: 30.sp),
                 child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
@@ -88,8 +103,7 @@ class HomeView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: TabBar(
-              labelStyle:
-              const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               labelPadding: const EdgeInsets.only(right: 5, left: 5),
               labelColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.label,
@@ -107,57 +121,122 @@ class HomeView extends StatelessWidget {
               tabs: [
                 Obx(
                       () => Container(
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
-                          color: _tabx.selectedTabIndex.value != 0
-                              ? Colors.white
-                              : Colors.transparent),
-                      child: Tab(text: "All",)
+                    width: tabw.sp,
+                    height: tabh.sp,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(45),
+                        color: _tabx.selectedTabIndex.value != 0
+                            ? Colors.white
+                            : Colors.transparent),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: FittedBox(
+                        child: Tab(
+                          height: 60.sp,
+                          child: Text("All",
+                            style: TextStyle(
+                                fontSize: tabfontsize.sp
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Obx(
                       () => Container(
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
-                          color: _tabx.selectedTabIndex.value != 1
-                              ? Colors.white
-                              : Colors.transparent),
-                      child: Tab(text: "Sell")
+                    width: tabw.sp,
+                    height: tabh.sp,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(45),
+                        color: _tabx.selectedTabIndex.value != 1
+                            ? Colors.white
+                            : Colors.transparent),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: FittedBox(
+                        child: Tab(
+                          height: 60.sp,
+                          child: Text("Sell",
+                            style: TextStyle(
+                                fontSize: tabfontsize.sp
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Obx(
                       () => Container(
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
-                          color: _tabx.selectedTabIndex.value != 2
-                              ? Colors.white
-                              : Colors.transparent),
-                      child: Tab(text: "Rent")
+                    width: tabw.sp,
+                    height: tabh.sp,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(45),
+                        color: _tabx.selectedTabIndex.value != 2
+                            ? Colors.white
+                            : Colors.transparent),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: FittedBox(
+                        child: Tab(
+                          height: 60.sp,
+                          child: Text("Rent",
+                            style: TextStyle(
+                                fontSize: tabfontsize.sp
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Obx(
                       () => Container(
-                      width: 80,
+                      width: tabw.sp,
+                      height: tabh.sp,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(45),
                           color: _tabx.selectedTabIndex.value != 3
                               ? Colors.white
                               : Colors.transparent),
-                      child: Tab(text: "Exchange")
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: FittedBox(
+                          child: Tab(
+                            height: 60.sp,
+                            child: Text("Exchange",
+                            style: TextStyle(
+                              fontSize: tabfontsize.sp
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                   ),
                 ),
                 Obx(
                       () => Container(
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
-                          color: _tabx.selectedTabIndex.value != 4
-                              ? Colors.white
-                              : Colors.transparent),
-                      child: Tab(text: "Auction")
+                    width: tabw.sp,
+                    height: tabh.sp,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(45),
+                        color: _tabx.selectedTabIndex.value != 4
+                            ? Colors.white
+                            : Colors.transparent),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: FittedBox(
+                        child: Tab(
+                          height: 60.sp,
+                          child: Text("Auction",
+                            style: TextStyle(
+                                fontSize: tabfontsize.sp
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ]),
@@ -169,6 +248,7 @@ class HomeView extends StatelessWidget {
                     children:  [
                       ListView.builder(
                         physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
                           itemCount:5,
                           itemBuilder: (context, index) {
                             return AdElement();
