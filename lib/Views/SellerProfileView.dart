@@ -213,7 +213,9 @@ class SellerProfileView extends StatelessWidget {
               width: Get.width *0.8816,
               height: Get.height* 0.0675,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/reportPerson');
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                       shape: MaterialStateProperty

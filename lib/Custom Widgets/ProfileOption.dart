@@ -13,7 +13,16 @@ class ProfileOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
-      child: Container(
+      child:  GestureDetector(
+        onTap: (){
+          if(namedView == "/home"){
+            //deconnect
+            Get.offAllNamed("/home");
+          }else{
+            Get.toNamed(namedView);
+          }
+        },
+        child: Container(
         height: Get.height*0.0886,
         width: Get.width*0.884,
         decoration: BoxDecoration(
@@ -22,17 +31,7 @@ class ProfileOption extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width*0.058),
-          child: GestureDetector(
-            onTap: (){
-              if(namedView == "/home"){
-                //deconnect
-                Get.offAllNamed("/home");
-              }else{
-                Get.toNamed(namedView);
-              }
-
-            },
-            child: Row(
+          child:Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(text,

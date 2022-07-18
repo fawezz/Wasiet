@@ -91,7 +91,7 @@ class NotificationView extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 24.sp, left: 8, right: 8),
-                    child: Container(
+                    child: SizedBox(
                         height: Get.height * 0.78,
                         child:
                         ListView.builder(
