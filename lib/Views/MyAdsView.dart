@@ -37,7 +37,9 @@ class MyAdsView extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                       iconSize: 30.sp,
-                      onPressed: null,
+                      onPressed: (){
+                        Get.toNamed("/notification");
+                      },
                     ),
                   ),
                 ),
@@ -126,7 +128,7 @@ class MyAdsView extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemCount:2,
                   itemBuilder: (context, index) {
-                    return AdElement();
+                    return AdElement(isEditable: true,);
                   },
                   shrinkWrap: true,
               ),]

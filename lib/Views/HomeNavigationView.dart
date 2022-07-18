@@ -6,8 +6,11 @@ import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'dart:ui' as ui;
 import 'package:wasiet/Views/HomeView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
+import 'package:wasiet/Views/NotificationView.dart';
+import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/TestScreen1.dart';
 
+import 'SellerProfileView.dart';
 import 'TestScreen2.dart';
 
 class HomeNavigationView extends StatelessWidget {
@@ -38,11 +41,13 @@ class HomeNavigationView extends StatelessWidget {
             PageView(
               controller: _navx.pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                HomeView(),
-                MyAdsView(),
-                TestScreen1(),
-                TestScreen2(),
+              children:  [
+                const HomeView(),
+                const MyAdsView(),
+                const TestScreen1(),
+                ProfileView(connected: true,),
+                //TestScreen2(),
+
                 //mes annonces
                 //chat
                 //Profile
@@ -66,7 +71,7 @@ class HomeNavigationView extends StatelessWidget {
                         ),
                       ),
                       Center(
-                        heightFactor: 0.7,
+                        heightFactor: 0.9,
                         child: Container(
                           height: 100.h,
                           width: 100,
@@ -74,15 +79,15 @@ class HomeNavigationView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                             boxShadow: [
                               BoxShadow(
-                                color: HexColor("#00B4EF").withOpacity(0.2),
-                                blurRadius: 40,
-                                spreadRadius: 1
+                                color: HexColor("#00B4EF").withOpacity(0.15),
+                                blurRadius: 20,
+                                spreadRadius: 0
                               )
                             ]
                           ),
                           child: Center(
                             child: SizedBox(
-                              height: 80.sp,
+                              height: 75.sp,
                               child: FloatingActionButton.large(
                                   backgroundColor: HexColor("#00B4EF"),
                                   child: Icon(Icons.add),
@@ -96,7 +101,7 @@ class HomeNavigationView extends StatelessWidget {
                         bottom: 0,
                         child: SizedBox(
                           width: size.width,
-                          height: 90.h,
+                          height: 80.h,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -105,8 +110,10 @@ class HomeNavigationView extends StatelessWidget {
                                   Obx(()=> SizedBox(
                                     height: 60.sp,
                                     child: IconButton(
-                                        icon: _navx.navBarIndex.value == 0 ? Image.asset("assets/icons/home_active.png") :
-                                        Image.asset("assets/icons/home.png"),
+                                        icon: Image.asset( _navx.navBarIndex.value == 0 ?
+                                        "assets/icons/home_active.png" : "assets/icons/home.png",
+                                        scale: 3.5,
+                                        ),
                                         onPressed: () =>
                                             _navx.updateNavBarIndex(0)
                                     ),
@@ -130,8 +137,9 @@ class HomeNavigationView extends StatelessWidget {
                                     height: 60.sp,
                                     child: IconButton(
                                       //iconSize: navIconSize,
-                                        icon: _navx.navBarIndex.value == 1 ? Image.asset("assets/icons/annonce_active.png") :
-                                        Image.asset("assets/icons/annonce.png"),
+                                        icon: Image.asset(_navx.navBarIndex.value == 1 ?
+                                        "assets/icons/annonce_active.png": "assets/icons/annonce.png",
+                                        ),
                                         onPressed: () {
                                           _navx.updateNavBarIndex(1);
                                         }),
@@ -157,8 +165,10 @@ class HomeNavigationView extends StatelessWidget {
                                   Obx(()=> SizedBox(
                                     height: 60.sp,
                                     child: IconButton(
-                                        icon: _navx.navBarIndex.value == 2 ? Image.asset("assets/icons/chat_active.png") :
-                                        Image.asset("assets/icons/chat.png"),
+                                        icon: Image.asset(_navx.navBarIndex.value == 2 ?
+                                        "assets/icons/chat_active.png" :"assets/icons/chat.png",
+                                        scale: 3.5,
+                                        ),
                                         onPressed: () {
                                           _navx.updateNavBarIndex(2);
                                         }),
@@ -181,8 +191,10 @@ class HomeNavigationView extends StatelessWidget {
                                   Obx(()=> SizedBox(
                                     height: 60.sp,
                                     child: IconButton(
-                                      icon: _navx.navBarIndex.value == 3 ? Image.asset("assets/icons/profile_active.png") :
-                                      Image.asset("assets/icons/profile.png"),
+                                      icon: Image.asset(
+                                          _navx.navBarIndex.value == 3 ?
+                                          "assets/icons/profile_active.png": "assets/icons/profile.png",
+                                      scale: 3.5,),
                                       onPressed: () {
                                         _navx.updateNavBarIndex(3);
                                       },
@@ -225,9 +237,9 @@ class navBarCustomPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     Path path = Path();
-    path.moveTo(0, 0); // Start
-    //path.quadraticBezierTo(200 , 0, size.width , 60);
-    path.arcToPoint(Offset(size.width, 700), radius: Radius.circular(-200), clockwise: true);
+    path.moveTo(0, -20); // Start
+    //path.quadraticBezierTo(800 , 0, size.width , 60);
+    path.arcToPoint(Offset(size.width, 1400), radius: Radius.circular(-200), clockwise: true);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.lineTo(0, 20);

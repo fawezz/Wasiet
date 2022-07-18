@@ -16,9 +16,9 @@ class HomeView extends StatelessWidget {
     final HomeTabController _tabx = Get.put(HomeTabController());
     Size size = MediaQuery.of(context).size;
 
-    const double tabw = 90;
-    const double tabh = 50;
-    const tabfontsize = 22;
+    final double tabw = size.width * 0.1956;
+    final double tabh = size.height * 0.0675;
+    final tabfontsize = 14.sp;
     return Column(
       children: [
         Padding(
@@ -27,8 +27,8 @@ class HomeView extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/icons/logo_bar.png',
-                width: size.width*0.18,
-                height: size.width*0.18,
+                width: size.width*0.1812,
+                height: size.width*0.1812,
               ),
               const Spacer(),
               FittedBox(
@@ -40,7 +40,9 @@ class HomeView extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     iconSize: 30.sp,
-                    onPressed: null,
+                    onPressed: (){
+                      Get.toNamed("/notification");
+                    },
                   ),
                 ),
               ),
@@ -112,7 +114,7 @@ class HomeView extends StatelessWidget {
               indicator: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [HexColor("#0066B8"), HexColor("00B4EF")]),
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(40.0),
               ),
               onTap: (int x) {
                 _tabx.updateSelectedIndex();
@@ -124,19 +126,17 @@ class HomeView extends StatelessWidget {
                     width: tabw.sp,
                     height: tabh.sp,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45),
+                        borderRadius: BorderRadius.circular(40),
                         color: _tabx.selectedTabIndex.value != 0
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
-                      child: FittedBox(
-                        child: Tab(
-                          height: 60.sp,
-                          child: Text("All",
-                            style: TextStyle(
-                                fontSize: tabfontsize.sp
-                            ),
+                      child: Tab(
+                        height: 60.sp,
+                        child: Text("All",
+                          style: TextStyle(
+                              fontSize: tabfontsize.sp
                           ),
                         ),
                       ),
@@ -148,19 +148,17 @@ class HomeView extends StatelessWidget {
                     width: tabw.sp,
                     height: tabh.sp,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45),
+                        borderRadius: BorderRadius.circular(40),
                         color: _tabx.selectedTabIndex.value != 1
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
-                      child: FittedBox(
-                        child: Tab(
-                          height: 60.sp,
-                          child: Text("Sell",
-                            style: TextStyle(
-                                fontSize: tabfontsize.sp
-                            ),
+                      child: Tab(
+                        height: 60.sp,
+                        child: Text("Sell",
+                          style: TextStyle(
+                              fontSize: tabfontsize.sp
                           ),
                         ),
                       ),
@@ -172,19 +170,17 @@ class HomeView extends StatelessWidget {
                     width: tabw.sp,
                     height: tabh.sp,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45),
+                        borderRadius: BorderRadius.circular(40),
                         color: _tabx.selectedTabIndex.value != 2
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
-                      child: FittedBox(
-                        child: Tab(
-                          height: 60.sp,
-                          child: Text("Rent",
-                            style: TextStyle(
-                                fontSize: tabfontsize.sp
-                            ),
+                      child: Tab(
+                        height: 60.sp,
+                        child: Text("Rent",
+                          style: TextStyle(
+                              fontSize: tabfontsize.sp
                           ),
                         ),
                       ),
@@ -196,19 +192,17 @@ class HomeView extends StatelessWidget {
                       width: tabw.sp,
                       height: tabh.sp,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
+                          borderRadius: BorderRadius.circular(40),
                           color: _tabx.selectedTabIndex.value != 3
                               ? Colors.white
                               : Colors.transparent),
                       child: Padding(
                         padding: const EdgeInsets.all(1.0),
-                        child: FittedBox(
-                          child: Tab(
-                            height: 60.sp,
-                            child: Text("Exchange",
-                            style: TextStyle(
-                              fontSize: tabfontsize.sp
-                              ),
+                        child: Tab(
+                          height: 60.sp,
+                          child: Text("Exchange",
+                          style: TextStyle(
+                            fontSize: tabfontsize.sp
                             ),
                           ),
                         ),
@@ -220,19 +214,17 @@ class HomeView extends StatelessWidget {
                     width: tabw.sp,
                     height: tabh.sp,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45),
+                        borderRadius: BorderRadius.circular(40),
                         color: _tabx.selectedTabIndex.value != 4
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
-                      child: FittedBox(
-                        child: Tab(
-                          height: 60.sp,
-                          child: Text("Auction",
-                            style: TextStyle(
-                                fontSize: tabfontsize.sp
-                            ),
+                      child: Tab(
+                        height: 60.sp,
+                        child: Text("Auction",
+                          style: TextStyle(
+                              fontSize: tabfontsize.sp
                           ),
                         ),
                       ),
@@ -246,13 +238,16 @@ class HomeView extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     controller: _tabx.controller,
                     children:  [
-                      ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount:5,
-                          itemBuilder: (context, index) {
-                            return AdElement();
-                          }
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15.sp),
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount:5,
+                            itemBuilder: (context, index) {
+                              return AdElement(isEditable: false,);
+                            }
+                        ),
                       ),
                       TestScreen2(),
                       TestScreen1(),
