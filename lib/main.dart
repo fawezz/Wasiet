@@ -5,6 +5,7 @@ import 'package:wasiet/Controllers/MyAdsController.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
+import 'package:wasiet/Views/ReportPersonView.dart';
 import 'package:wasiet/Views/SellerProfileView.dart';
 
 import 'Views/HomeNavigationView.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/sellerProfile', page: () => const SellerProfileView()),
             GetPage(name: '/notification', page: () => const NotificationView()),
             GetPage(name: '/profile', page: () => ProfileView()),
+            GetPage(name: '/reportPerson', page: () => const ReportPersonView()),
           ],
         );
       },
