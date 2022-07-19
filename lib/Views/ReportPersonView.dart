@@ -233,7 +233,7 @@ class ReportPersonView extends StatelessWidget {
                               scale: 3.5,
                             )),
                         onPressed: () {
-                          _reportx.selectImage();
+                          _reportx.showAddPictureBottomSheet(Get.context);
                         },
                       ),
                     ),
@@ -261,7 +261,7 @@ class ReportPersonView extends StatelessWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     shape: const StadiumBorder(),
                     child: Text(
-                      'text',
+                      'Send',
                       style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     ),
                     onPressed: () {

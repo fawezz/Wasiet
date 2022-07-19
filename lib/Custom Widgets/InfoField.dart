@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class SellerInfoField extends StatelessWidget {
-  SellerInfoField({Key? key,required this.labelText,required this.data}) : super(key: key);
+class InfoField extends StatelessWidget {
+  InfoField({Key? key,required this.labelText,required this.data}) : super(key: key);
 
   String labelText;
   String data;

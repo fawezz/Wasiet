@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/SellerInfoField.dart';
+import 'package:wasiet/Custom%20Widgets/InfoField.dart';
 
 import '../Custom Widgets/AdElement.dart';
 
@@ -97,9 +97,9 @@ class SellerProfileView extends StatelessWidget {
               ],
             ),
             30.sp.verticalSpace,
-            SellerInfoField(labelText: "Email", data: "example@example.com"),
-            SellerInfoField(labelText: "Phone number", data: "32165465487"),
-            SellerInfoField(labelText: "Country", data: "Saudi Arabia"),
+            InfoField(labelText: "Email", data: "example@example.com"),
+            InfoField(labelText: "Phone number", data: "32165465487"),
+            InfoField(labelText: "Country", data: "Saudi Arabia"),
             30.sp.verticalSpace,
             Padding(
               padding: const EdgeInsets.only(left: 20),
