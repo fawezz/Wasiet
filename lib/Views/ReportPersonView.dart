@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../Controllers/ReportPersonController.dart';
+import '../Custom Widgets/ReportPictureCard.dart';
 
 class ReportPersonView extends StatelessWidget {
   const ReportPersonView({Key? key}) : super(key: key);
@@ -65,203 +69,209 @@ class ReportPersonView extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 18.0),
-                  child: CircleAvatar(
-                    radius: Get.width * 0.07,
-                    foregroundImage:
-                        Image.asset("assets/icons/seller.jpg").image,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 18.0),
+                    child: CircleAvatar(
+                      radius: Get.width * 0.07,
+                      foregroundImage:
+                          Image.asset("assets/icons/seller.jpg").image,
+                    ),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "foulen ben foulen",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      7.sp.verticalSpace,
+                      Text(
+                        "member since 03-02-2021",
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          color: HexColor("#999999"),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 24.sp),
+                child: Column(
                   children: [
-                    Text(
-                      "foulen ben foulen",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
+                        child: Text(
+                          "Subject",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                     ),
-                    7.sp.verticalSpace,
-                    Text(
-                      "member since 03-02-2021",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        color: HexColor("#999999"),
+                    Container(
+                      height: 0.08.sh,
+                      width: 0.88.sw,
+                      decoration: BoxDecoration(
+                        color: HexColor("#F6F7FA"),
+                        borderRadius: BorderRadius.circular(20),
                       ),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: HexColor("#F6F7FA"),
+                              ),
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp),
+                            ),
+                          )),
                     ),
                   ],
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 24.sp),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
-                      child: Text(
-                        "Subject",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 24.sp),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
+                        child: Text(
+                          "Report details",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 0.08.sh,
-                    width: 0.88.sw,
-                    decoration: BoxDecoration(
-                      color: HexColor("#F6F7FA"),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: HexColor("#F6F7FA"),
-                            ),
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp),
-                          ),
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 24.sp),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
-                      child: Text(
-                        "Report details",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    Container(
+                      height: 0.2.sh,
+                      width: 0.88.sw,
+                      decoration: BoxDecoration(
+                        color: HexColor("#F6F7FA"),
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: 0.2.sh,
-                    width: 0.88.sw,
-                    decoration: BoxDecoration(
-                      color: HexColor("#F6F7FA"),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: TextField(
-                            maxLines: 9,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: HexColor("#F6F7FA"),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: TextField(
+                              maxLines: 9,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: HexColor("#F6F7FA"),
+                              ),
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp),
                             ),
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp),
-                          ),
-                        )),
-                  ),
-                ],
+                          )),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            24.sp.verticalSpace,
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
-                child: Text(
-                  "Add pictures",
-                  style: TextStyle(
-                    color: HexColor("#0A3C5F"),
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
+              24.sp.verticalSpace,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0.05.sw, bottom: 8),
+                  child: Text(
+                    "Add pictures",
+                    style: TextStyle(
+                      color: HexColor("#0A3C5F"),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Obx(() => Wrap(
-                children: [
-                  Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    height: 0.2.sh,
-                    width: 0.42.sw,
-                    decoration: BoxDecoration(
-                      color: HexColor("#0066B8").withOpacity(0.08),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: MaterialButton(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      shape: const StadiumBorder(),
-                      child: Align(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            "assets/icons/plus-circle.png",
-                            scale: 3.5,
-                          )),
-                      onPressed: () {
-                        _reportx.selectImage();
-                      },
+              Obx(() => Wrap(
+                spacing: 6.sp,
+                runSpacing: 6.sp,
+                direction: Axis.horizontal,
+                  children: [
+                    Container(
+                      height: 0.2.sh,
+                      width: 0.42.sw,
+                      decoration: BoxDecoration(
+                        color: HexColor("#0066B8").withOpacity(0.08),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: MaterialButton(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        shape: const StadiumBorder(),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              "assets/icons/plus-circle.png",
+                              scale: 3.5,
+                            )),
+                        onPressed: () {
+                          _reportx.selectImage();
+                        },
+                      ),
                     ),
 
-                  ),
-                ),
-                ]
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 25.h),
-              child: Container(
-                width: Get.width * 0.88,
-                height: Get.height * 0.07,
-                decoration: ShapeDecoration(
-                  shape: const StadiumBorder(),
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [HexColor("#0066B8"), HexColor("#00B2EE"),],
-                  ),
-                ),
-                child: MaterialButton(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape: const StadiumBorder(),
-                  child: Text(
-                    'text',
-                    style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                  ),
-                  onPressed: () {
-                    print('upload picture!');
-                  },
+                    ...(_reportx.imageFileList).map((i) {
+                      return ReportPictureCard(image: i);
+                    }).toList()
+                  ]
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: EdgeInsets.only(top: 25.h),
+                child: Container(
+                  width: Get.width * 0.88,
+                  height: Get.height * 0.07,
+                  decoration: ShapeDecoration(
+                    shape: const StadiumBorder(),
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [HexColor("#0066B8"), HexColor("#00B2EE"),],
+                    ),
+                  ),
+                  child: MaterialButton(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    shape: const StadiumBorder(),
+                    child: Text(
+                      'text',
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                    ),
+                    onPressed: () {
+                      _reportx.sendReport();
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

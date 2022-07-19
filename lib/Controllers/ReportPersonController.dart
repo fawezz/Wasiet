@@ -11,13 +11,19 @@ class ReportPersonController extends GetxController with GetTickerProviderStateM
 
   void selectImage() async{
     List<XFile>? selectedImages = await _picker.pickMultiImage();
+    print("aaaa" + selectedImages.toString());
     if(selectedImages == null){
       return;
     }
-    else{
-      imageFileList.addAll(selectedImages);
+    selectedImages.forEach((e) {
+      imageFileList.add(File(e.path));
     }
+    );
+  }
 
+  void sendReport() {
+    // send data
+    Get.offAndToNamed('/myReports');
   }
 
 }

@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wasiet/Controllers/MyAdsController.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
+import 'package:wasiet/Views/MyReportsView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/ReportPersonView.dart';
 import 'package:wasiet/Views/SellerProfileView.dart';
 
 import 'Views/HomeNavigationView.dart';
+import 'Views/ReportDetailsView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/notification', page: () => const NotificationView()),
             GetPage(name: '/profile', page: () => ProfileView()),
             GetPage(name: '/reportPerson', page: () => const ReportPersonView()),
+            GetPage(name: '/myReports', page: () => const MyReportsView()),
+            GetPage(name: '/reportDetails', page: () => const ReportDetailsView()),
+
           ],
         );
       },
