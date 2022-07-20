@@ -6,6 +6,7 @@ import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'dart:ui' as ui;
 import 'package:wasiet/Views/HomeView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
+import 'package:wasiet/Views/NewAdView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/TestScreen1.dart';
@@ -19,7 +20,6 @@ class HomeNavigationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeNavController _navx = Get.put(HomeNavController());
-    Size size = MediaQuery.of(context).size;
 
     double navIconSize = 40;
     return SafeArea(
@@ -44,7 +44,7 @@ class HomeNavigationView extends StatelessWidget {
               children:  [
                 const HomeView(),
                 const MyAdsView(),
-                const TestScreen1(),
+                NewAdView(),
                 ProfileView(connected: true,),
                 //TestScreen2(),
 
@@ -57,8 +57,8 @@ class HomeNavigationView extends StatelessWidget {
             Positioned(
                 bottom: 0,
                 left: 0,
-                child: Container(
-                  width: size.width,
+                child: SizedBox(
+                  width: Get.width,
                   height: 100.h,
                   child: Stack(
                     children: [
@@ -66,7 +66,7 @@ class HomeNavigationView extends StatelessWidget {
                         bottom: 0,
                         left: 0,
                         child: CustomPaint(
-                          size: Size(size.width, 55.h),
+                          size: Size(Get.width, 55.h),
                           painter: navBarCustomPainter(),
                         ),
                       ),
@@ -100,7 +100,7 @@ class HomeNavigationView extends StatelessWidget {
                       Positioned(
                         bottom: 0,
                         child: SizedBox(
-                          width: size.width,
+                          width: Get.width,
                           height: 80.h,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -158,7 +158,7 @@ class HomeNavigationView extends StatelessWidget {
                                 ],
                               ),
                               Container(
-                                width: size.width * 0.20,
+                                width: Get.width * 0.20,
                               ),
                               Column(
                                 children: [

@@ -128,7 +128,7 @@ class ProfileView extends StatelessWidget {
                 ),
                 (Get.height*0.01).verticalSpace,
                 ProfileOption(text: "Edit my information", namedView: "/editInfo"),
-                ProfileOption(text: "Complaints follow up", namedView: "/myReports"),
+                ProfileOption(text: "Complaints follow up", namedView: "/myComplaints"),
                 ProfileOption(text: "My ads", namedView: "/myAds"),
                 ProfileOption(text: "Auction Participations", namedView: "/AuctionParticipation"),
                 ProfileOption(text: "Favorites", namedView: "/favorites"),
