@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../Controllers/MyAdsController.dart';
-import '../Custom Widgets/AdElement.dart';
+import '../Custom Widgets/AdCard.dart';
 
 class MyAdsView extends StatelessWidget {
   const MyAdsView({Key? key}) : super(key: key);

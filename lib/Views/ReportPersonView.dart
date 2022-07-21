@@ -7,7 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../Controllers/ReportPersonController.dart';
-import '../Custom Widgets/ReportPictureCard.dart';
+import '../Custom Widgets/PictureCard.dart';
 
 class ReportPersonView extends StatelessWidget {
   const ReportPersonView({Key? key}) : super(key: key);
@@ -237,9 +237,14 @@ class ReportPersonView extends StatelessWidget {
                         },
                       ),
                     ),
-
+                    if(_reportx.imageFileList.isEmpty)...[
+                      SizedBox(height: 0.2.sh, width: 0.4.sw,),
+                    ],
                     ...(_reportx.imageFileList).map((i) {
-                      return ReportPictureCard(image: i);
+                      return PictureCard(image: i, onCancel: (){
+                        _reportx.imageFileList.remove(i);
+                      },
+                      );
                     }).toList()
                   ]
                 ),

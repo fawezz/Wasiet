@@ -5,7 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Custom%20Widgets/InfoField.dart';
 
 import '../Controllers/ComplaintDetailsController.dart';
-import '../Custom Widgets/ReportPictureCard.dart';
+import '../Custom Widgets/PictureCard.dart';
 
 class ComplaintDetailsView extends StatelessWidget {
   const ComplaintDetailsView({Key? key}) : super(key: key);

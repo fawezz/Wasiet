@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/AdElement.dart';
+import 'package:wasiet/Custom%20Widgets/AdCard.dart';
 
 import '../Controllers/HomeTabController.dart';
 import 'TestScreen1.dart';

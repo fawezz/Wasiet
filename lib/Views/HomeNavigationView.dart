@@ -6,7 +6,7 @@ import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'dart:ui' as ui;
 import 'package:wasiet/Views/HomeView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
-import 'package:wasiet/Views/NewAdView.dart';
+import 'package:wasiet/Views/NewAdNavigationView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/TestScreen1.dart';
@@ -44,7 +44,7 @@ class HomeNavigationView extends StatelessWidget {
               children:  [
                 const HomeView(),
                 const MyAdsView(),
-                NewAdView(),
+                NewAdNavigationView(),
                 ProfileView(connected: true,),
                 //TestScreen2(),
 
@@ -90,9 +90,9 @@ class HomeNavigationView extends StatelessWidget {
                               height: 75.sp,
                               child: FloatingActionButton.large(
                                   backgroundColor: HexColor("#00B4EF"),
-                                  child: Icon(Icons.add),
                                   elevation: 0.1,
-                                  onPressed: () {}),
+                                  onPressed: () => Get.toNamed("/newAd"),
+                                  child: const Icon(Icons.add)),
                             ),
                           ),
                         ),
@@ -214,6 +214,7 @@ class HomeNavigationView extends StatelessWidget {
                                   )
                                 ],
                               ),
+
                             ],
                           ),
                         ),

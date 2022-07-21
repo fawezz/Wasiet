@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Custom%20Widgets/InfoField.dart';
 
-import '../Custom Widgets/AdElement.dart';
+import '../Custom Widgets/AdCard.dart';
 
 class SellerProfileView extends StatelessWidget {
   const SellerProfileView({Key? key}) : super(key: key);
