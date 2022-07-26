@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:wasiet/app/Constants.dart';
 
 import '../Custom Widgets/ButtonBlueGradiant.dart';
@@ -33,7 +34,27 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
       stepController.animateToPage(stepIndex.value, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
     }
   }
-
+/*
+  RxList<HexColor> colors =  [HexColor("#9E9E9E"), HexColor("#D2D2D2"),].obs;
+  void updateColors(){
+    switch(stepIndex.value) {
+      case 0:
+        if( titleController.value.text.isNotEmpty ){
+          colors.value = [HexColor("#0066B8"), HexColor("#00B2EE"),];
+        }else{
+          colors.value = [HexColor("#9E9E9E"), HexColor("#D2D2D2"),];
+        }
+        break;
+      case 1:
+        print('one!');
+        break;
+      case 2:
+        print('two!');
+        break;
+      default:
+        print('choose a different number!');
+    }
+  }*/
 
   //Step 1
   final titleController = TextEditingController().obs;
@@ -112,11 +133,15 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: (){
-                            if(imageFileList.value.length<5) {
-                              selectImage("CAMERA");
+                          onTap: () async {
+                            if(await Permission.camera.request().isGranted){
+                              if(imageFileList.value.length<5) {
+                                selectImage("CAMERA");
+                              }else{
+                                _showToast("Maximum number of images reached");
+                              }
                             }else{
-                              _showMaxPicturesToast();
+                              _showToast("Camera Permission Denied");
                             }
                           },
                           child: Row(children: [
@@ -146,11 +171,15 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: (){
-                            if(imageFileList.value.length<5) {
-                              selectImage("Gallery");
+                          onTap: () async {
+                            if(await Permission.storage.request().isGranted){
+                              if(imageFileList.value.length<5) {
+                                selectImage("GALLERY");
+                              }else{
+                                _showToast("Maximum number of images reached");
+                              }
                             }else{
-                              _showMaxPicturesToast();
+                              _showToast("Storage Permission Denied");
                             }
                           },
                           child: Row(children: [
@@ -185,13 +214,13 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
           );
         });
     }else{
-      _showMaxPicturesToast();
+      _showToast("Maximum number of images reached");
     }
   }
 
-  _showMaxPicturesToast(){
+  _showToast(String message){
     Fluttertoast.showToast(
-        msg: "Maximum number of images reached",
+        msg: message,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,

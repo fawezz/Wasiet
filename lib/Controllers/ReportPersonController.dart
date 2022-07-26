@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ReportPersonController extends GetxController with GetTickerProviderStateMixin {
 
@@ -72,8 +74,12 @@ class ReportPersonController extends GetxController with GetTickerProviderStateM
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: (){
-                            selectImage("CAMERA");
+                          onTap: () async {
+                            if(await Permission.camera.request().isGranted){
+                              selectImage("CAMERA");
+                            }else{
+                              _showToast("Camera Permission Denied");
+                            }
                           },
                           child: Row(children: [
                             Container(
@@ -102,8 +108,13 @@ class ReportPersonController extends GetxController with GetTickerProviderStateM
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: (){
-                            selectImage("Gallery");
+                          onTap: () async {
+                            if(await Permission.storage.request().isGranted){
+                              selectImage("GALLERY");
+                            }
+                            else{
+                              _showToast("Storage Permission Denied");
+                            }
                           },
                           child: Row(children: [
                             Container(
@@ -136,6 +147,17 @@ class ReportPersonController extends GetxController with GetTickerProviderStateM
             ]),
           );
         });
+  }
+  _showToast(String message){
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.redAccent.withOpacity(0.8),
+        textColor: Colors.white,
+        fontSize: 14.0
+    );
   }
 
 }
