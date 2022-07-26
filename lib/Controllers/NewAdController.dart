@@ -6,6 +6,10 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wasiet/app/Constants.dart';
+
+import '../Custom Widgets/ButtonBlueGradiant.dart';
+import '../Custom Widgets/RadioList.dart';
 
 
 class NewAdController extends GetxController with GetSingleTickerProviderStateMixin {
@@ -14,6 +18,7 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final stepController = PageController(initialPage: 0);
   var stepIndex = 0 .obs;
   final numberOfSteps = 5;
+
 
   void nextStepIndex() {
     //print(stepIndex);
@@ -28,6 +33,8 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
       stepController.animateToPage(stepIndex.value, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
     }
   }
+
+
   //Step 1
   final titleController = TextEditingController().obs;
   final countryController = TextEditingController().obs;
@@ -41,6 +48,9 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final surfaceController = TextEditingController().obs;
   final unitPriceController = TextEditingController().obs;
   final totalPriceController = TextEditingController().obs;
+      // radio buttons
+  static Rx<String> purpose = purposeList.first.obs;
+  static Rx<String> type = typeList.first.obs;
   //step 3
   final northController = TextEditingController().obs;
   final southController = TextEditingController().obs;
@@ -51,11 +61,12 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final identityController = TextEditingController().obs;
 
 
+
+
+
   //step 5
   final ImagePicker _picker = ImagePicker();
   var imageFileList = [].obs;
-
-
 
   void selectImage(String _source) async{
     XFile? selectedImage;
@@ -189,6 +200,60 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
         fontSize: 14.0
     );
   }
+
+  //bottomSheet
+  showPurposeBottomSheet(context, String title,
+      List<String> choicesList, Rx<String> groupValue,
+      Rx<TextEditingController> textController ) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Wrap(children: [
+            Container(
+            decoration: const BoxDecoration(
+            color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40))),
+                  child: Padding(
+                    padding: EdgeInsets.all(24.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Center(child:
+                          Container(
+                            height: 8,
+                            width: 66,
+                            decoration: BoxDecoration(
+                                color: HexColor("##EBEBEB"),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                          )),
+                        0.03.sh.verticalSpace,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(title,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              color: HexColor("#0A3C5F"),
+                            ),
+                          ),
+                        ),
+                        RadioList(textList: choicesList, groupValue: groupValue, ),
+                        ButtonBlueGradiant(text: 'Confirm',
+                          function: (){
+                            textController.value.text = groupValue.value;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ]);
+        });
+  }
+
 
 
   @override

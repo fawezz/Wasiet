@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wasiet/Custom%20Widgets/ButtonBlueGradiant.dart';
 
 import '../Controllers/ReportPersonController.dart';
 import '../Custom Widgets/PictureCard.dart';
@@ -249,31 +250,8 @@ class ReportPersonView extends StatelessWidget {
                   ]
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 25.h),
-                child: Container(
-                  width: Get.width * 0.88,
-                  height: Get.height * 0.07,
-                  decoration: ShapeDecoration(
-                    shape: const StadiumBorder(),
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [HexColor("#0066B8"), HexColor("#00B2EE"),],
-                    ),
-                  ),
-                  child: MaterialButton(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    shape: const StadiumBorder(),
-                    child: Text(
-                      'Send',
-                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                    ),
-                    onPressed: () {
-                      _reportx.sendReport();
-                    },
-                  ),
-                ),
+              ButtonBlueGradiant(text: 'Send',
+                function: ()=> _reportx.sendReport(),
               )
             ],
           ),

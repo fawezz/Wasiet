@@ -47,17 +47,17 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 15),
-              FittedBox(
-                child: SizedBox(
-                  height: 60.sp,
-                  child: IconButton(
-                    icon: Image.asset(
-                      'assets/icons/settings.png',
-                      fit: BoxFit.fill,
-                    ),
-                    iconSize: size.width * 0.05,
-                    onPressed: () {},
+              SizedBox(
+                height: 60.sp,
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/icons/settings.png',
+                    fit: BoxFit.fill,
                   ),
+                  iconSize: size.width * 0.05,
+                  onPressed: () {
+                    Get.toNamed('/settings');
+                  },
                 ),
               ),
             ],

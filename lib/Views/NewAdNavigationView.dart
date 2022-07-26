@@ -176,19 +176,29 @@ class NewAdNavigationView extends StatelessWidget {
                             gradient: LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                              colors: newAdController.stepIndex.value != newAdController.numberOfSteps - 1?
-                              [HexColor("#0066B8"), HexColor("#00B2EE"),]:
-                              [HexColor("#9E9E9E"), HexColor("#D2D2D2"),]
+                              //Case newAdController.stepIndex.value fel controller fonction testi w tbadel couleur obs
+                              colors: newAdController.stepIndex.value != newAdController.numberOfSteps - 1 || newAdController.imageFileList.isNotEmpty?
+                              [HexColor("#0066B8"), HexColor("#00B2EE"),]: // blue
+                              [HexColor("#9E9E9E"), HexColor("#D2D2D2"),]  //grey
                             ),
                           ),
                           child: MaterialButton(
                             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             shape: const StadiumBorder(),
                             onPressed: newAdController.stepIndex.value == newAdController.numberOfSteps - 1?
-                            null:() {
-                              newAdController.nextStepIndex();
-                              //print("textcontroller value is : " + newAdController.titleController.value.text);
-                            },
+                                //test if it's the last page
+                                (){ //if yes then test if there are pictures
+                                  if(newAdController.imageFileList.isEmpty) //if empty do nothing
+                                      {}
+                                  else {
+                                    //send data
+                                    Get.offAllNamed('/home');
+                                  }
+                                }
+                                :(){
+                                  newAdController.nextStepIndex();
+                                //print("textcontroller value is : " + newAdController.purposeController.value.text);
+                                },
                             child: Text(
                               newAdController.stepIndex.value < newAdController.numberOfSteps - 1?
                               'Next':'Send',
@@ -196,9 +206,6 @@ class NewAdNavigationView extends StatelessWidget {
                             ),
                           ),
                         ),
-
-
-
                       ],
                     )
                     ),

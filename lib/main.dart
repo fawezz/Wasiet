@@ -12,6 +12,7 @@ import 'package:wasiet/Views/SellerProfileView.dart';
 import 'Views/HomeNavigationView.dart';
 import 'Views/ComplaintDetailsView.dart';
 import 'Views/NewAdNavigationView.dart';
+import 'Views/SettingsView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/myComplaints', page: () => const MyComplaintsView()),
             GetPage(name: '/complaintDetails', page: () => const ComplaintDetailsView()),
             GetPage(name: '/newAd', page: () => NewAdNavigationView()),
+            GetPage(name: '/settings', page: () => const SettingsView()),
 
           ],
         );
