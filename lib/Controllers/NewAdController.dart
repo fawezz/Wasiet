@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:wasiet/Controllers/HomeNavController.dart';
+import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
 import 'package:wasiet/Custom%20Widgets/CheckList.dart';
 import 'package:wasiet/Custom%20Widgets/SearchField.dart';
 import 'package:wasiet/app/Constants.dart';
@@ -352,6 +354,84 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
               ),
             ]),
           );
+        });
+  }
+
+  confirmCancel(context, String title, String message) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: false,
+        builder: (BuildContext context) {
+          return Wrap(children: [
+            Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40))
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(24.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Center(child:
+                      Container(
+                        height: 8.h,
+                        width: 66.w,
+                        decoration: BoxDecoration(
+                            color: HexColor("##EBEBEB"),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                      ),
+                    ),
+                    0.03.sh.verticalSpace,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(title,
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                          color: HexColor("#0A3C5F"),
+                        ),
+                      ),
+                    ),
+                    16.h.verticalSpace,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(message,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                    22.h.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ButtonOutline(text: "No",
+                          height: Get.height* 0.07,
+                          width: Get.width *0.4,
+                          function: () => Get.back(),
+                        ),
+                        16.w.horizontalSpace,
+                        ButtonBlueGradiant(text: 'Yes',
+                          height: Get.height* 0.07,
+                          width: Get.width *0.4,
+                          function: (){
+                            Get.delete<HomeNavController>();
+                            Get.offAllNamed("/home");
+                            Get.delete<NewAdController>();
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ]);
         });
   }
 

@@ -97,7 +97,7 @@ class NewAdStep1 extends StatelessWidget {
                   textController: newAdController.currencyController,
                   obligatory: false,
                   numeric: true,
-                  prefixIcon: true,
+                  //prefixIcon: "assets/icons/outlineHeart.png",
                   function: ()=> print("aaa"),
                 ),
               ],

@@ -107,7 +107,7 @@ class ProfileView extends StatelessWidget {
                           height: Get.height* 0.0675,
                           child: ElevatedButton(
                               onPressed: () {
-                                print("log in button pressed");
+                                Get.toNamed("login");
                               },
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all<Color>(Colors.white),

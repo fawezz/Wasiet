@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep0.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep1.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep2.dart';
@@ -61,7 +62,9 @@ class NewAdNavigationView extends StatelessWidget {
                         ),
                         IconButton(
                             onPressed: () {
-                              Get.back();
+                              newAdController.confirmCancel(Get.context,
+                                  "Information",
+                                  "Are you sure to cancel a new ad? All data listed will be erased");
                             },
                             icon: Image.asset(
                               "assets/icons/x.png",
@@ -142,23 +145,8 @@ class NewAdNavigationView extends StatelessWidget {
                     child: Obx(() => Row(
                       children: [
                         newAdController.stepIndex.value != 0 ?
-                        SizedBox(
-                          width: Get.width *0.422,
-                          height: Get.height* 0.07,
-                          child: ElevatedButton(
-                              onPressed: () => newAdController.prevStepIndex(),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                shape: MaterialStateProperty
-                                    .all(RoundedRectangleBorder(side: BorderSide(width: 2, color: HexColor("#0A3C5F")),
-                                    borderRadius: BorderRadius.circular(16))),
-                              ),
-                              child: Text("Previous",
-                                style: TextStyle(
-                                  color: HexColor("#0A3C5F"),
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),)),
+                        ButtonOutline(text: "Previous",
+                          function: () => newAdController.prevStepIndex(),
                         ):
                         SizedBox(
                           width: Get.width *0.422,

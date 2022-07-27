@@ -12,7 +12,7 @@ class ProfileOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 4.0),
+      padding: EdgeInsets.only(top: 8.h),
       child:  GestureDetector(
         onTap: (){
           if(namedView == "/home"){

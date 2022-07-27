@@ -214,7 +214,6 @@ class HomeNavigationView extends StatelessWidget {
                                   )
                                 ],
                               ),
-
                             ],
                           ),
                         ),

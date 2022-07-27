@@ -250,8 +250,11 @@ class ReportPersonView extends StatelessWidget {
                   ]
                 ),
               ),
-              ButtonBlueGradiant(text: 'Send',
-                function: ()=> _reportx.sendReport(),
+              Padding(
+                padding: EdgeInsets.only(top: 25.h),
+                child: ButtonBlueGradiant(text: 'Send',
+                  function: ()=> _reportx.sendReport(),
+                ),
               )
             ],
           ),

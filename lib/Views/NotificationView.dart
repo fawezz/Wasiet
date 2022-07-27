@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/NotificationController.dart';
+import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
 
 import '../models/NotificationModel.dart';
 
@@ -71,23 +72,10 @@ class NotificationView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  ButtonOutline(text: "Delete all notifications",
                     width: Get.width *0.8816,
                     height: Get.height* 0.0675,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          shape: MaterialStateProperty
-                              .all(RoundedRectangleBorder(side: BorderSide(width: 2, color: HexColor("#0A3C5F")),
-                              borderRadius: BorderRadius.circular(16))),
-                        ),
-                        child: Text("Delete all notifications",
-                          style: TextStyle(
-                            color: HexColor("#0A3C5F"),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold,
-                          ),)),
+                    function: () => {},
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 24.sp, left: 8, right: 8),

@@ -8,7 +8,9 @@ import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/ReportPersonView.dart';
 import 'package:wasiet/Views/SellerProfileView.dart';
+import 'package:wasiet/Views/login_views/LoginView.dart';
 import 'package:wasiet/Views/settings_views/AboutView.dart';
+import 'package:wasiet/Views/settings_views/ContactUsView.dart';
 import 'package:wasiet/Views/settings_views/SettingsView.dart';
 import 'package:wasiet/Views/settings_views/TermsView.dart';
 
@@ -50,6 +52,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/settings', page: () => const SettingsView()),
             GetPage(name: '/terms', page: () => const TermsView()),
             GetPage(name: '/about', page: () => const AboutView()),
+            GetPage(name: '/contactUs', page: () => const ContactUsView()),
+            GetPage(name: '/login', page: () => const LoginView()),
 
           ],
         );

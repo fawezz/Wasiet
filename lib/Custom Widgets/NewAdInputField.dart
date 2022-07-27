@@ -8,7 +8,7 @@ class NewAdInputField extends StatefulWidget {
     required this.dropdown, required this.textController,
     required this.obligatory,
     this.width = 0, this.height = 0, this.label = true,
-    this.numeric = false, this.multiline = false, this.prefixIcon=false,
+    this.numeric = false, this.multiline = false, this.prefixIcon = '',
     required this.function }) : super(key: key);
 
   final String text;
@@ -17,10 +17,10 @@ class NewAdInputField extends StatefulWidget {
   final bool obligatory;
   final bool label;
   final bool numeric;
-  final bool prefixIcon;
   final bool multiline;
   final double width;
   final double height;
+  final String prefixIcon;
 
   Rx<TextEditingController> textController;
 
@@ -85,13 +85,17 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
                       hintText: widget.text,
                       filled: widget.textController.value.text.isEmpty? true : false,
                       fillColor: HexColor("#F2F2F2"),
-                      prefix: widget.prefixIcon==true?
+                      prefix: widget.prefixIcon.isNotEmpty?
                       Container(
-                        margin: EdgeInsets.only(right: 8),
+                        margin: EdgeInsets.only(right: 20.w),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                          child: Image.asset("assets/icons/x-white.png", scale: 3,)
+                          child: Image.asset(widget.prefixIcon,
+                            scale: 3,
+                            height: 22.h,
+                            width: 14.w,
+                          )
                       ) :null,
                       hintStyle: TextStyle(
                         fontSize: 14,
