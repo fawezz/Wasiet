@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:wasiet/Custom%20Widgets/CheckList.dart';
+import 'package:wasiet/Custom%20Widgets/SearchField.dart';
 import 'package:wasiet/app/Constants.dart';
 
 import '../Custom Widgets/ButtonBlueGradiant.dart';
@@ -56,12 +58,16 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
     }
   }*/
 
+  final searchController = TextEditingController().obs;
+
   //Step 1
   final titleController = TextEditingController().obs;
   final countryController = TextEditingController().obs;
   final regionController = TextEditingController().obs;
   final cityController = TextEditingController().obs;
   final streetController = TextEditingController().obs;
+  final currencyController = TextEditingController().obs;
+
   //step 2
   final purposeController = TextEditingController().obs;
   final typeController = TextEditingController().obs;
@@ -80,6 +86,7 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final detailsController = TextEditingController().obs;
   final emailController = TextEditingController().obs;
   final identityController = TextEditingController().obs;
+  List checkedItems = [];
 
 
 
@@ -230,12 +237,13 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
     );
   }
 
-  //bottomSheet
-  showPurposeBottomSheet(context, String title,
+  //bottomSheets
+  showRadioBottomSheet(context, String title,
       List<String> choicesList, Rx<String> groupValue,
-      Rx<TextEditingController> textController ) {
+      Rx<TextEditingController> textController, bool search) {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext context) {
           return Wrap(children: [
             Container(
@@ -251,8 +259,8 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
                       children: [
                         Center(child:
                           Container(
-                            height: 8,
-                            width: 66,
+                            height: 8.h,
+                            width: 66.w,
                             decoration: BoxDecoration(
                                 color: HexColor("##EBEBEB"),
                                 borderRadius: BorderRadius.circular(10)
@@ -269,10 +277,14 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
                             ),
                           ),
                         ),
-                        RadioList(textList: choicesList, groupValue: groupValue, ),
+                        search?
+                        SearchField(searchController: searchController):Container(),
+
+                        RadioList(textList: choicesList, groupValue: groupValue),
                         ButtonBlueGradiant(text: 'Confirm',
                           function: (){
                             textController.value.text = groupValue.value;
+                            Get.back();
                           },
                         ),
                       ],
@@ -283,7 +295,65 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
         });
   }
 
-
+  showCheckListBottomSheet(context, String title,
+      List<String> choicesList,) {
+    RxList checkedItemsTemporary = [].obs;
+    checkedItemsTemporary.addAll(checkedItems);
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Wrap(children: [
+              Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40))),
+                child: Padding(
+                  padding: EdgeInsets.all(24.w),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(child:
+                        Container(
+                          height: 8.h,
+                          width: 66.w,
+                          decoration: BoxDecoration(
+                              color: HexColor("##EBEBEB"),
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                        )
+                      ),
+                      0.03.sh.verticalSpace,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(title,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor("#0A3C5F"),
+                          ),
+                        ),
+                      ),
+                      SearchField(searchController: searchController),
+                      CheckList(textList: choicesList, checkedItems: checkedItemsTemporary,),
+                      ButtonBlueGradiant(text: 'Confirm',
+                        function: (){
+                          checkedItems = checkedItemsTemporary.value;
+                          Get.back();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ]),
+          );
+        });
+  }
 
   @override
   void onInit() {

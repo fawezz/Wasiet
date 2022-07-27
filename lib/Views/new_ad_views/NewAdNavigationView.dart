@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Views/NewAdStep0.dart';
-import 'package:wasiet/Views/NewAdStep4.dart';
-
-import '../Controllers/NewAdController.dart';
-import 'NewAdStep1.dart';
-import 'NewAdStep2.dart';
+import 'package:wasiet/Views/new_ad_views/NewAdStep0.dart';
+import 'package:wasiet/Views/new_ad_views/NewAdStep1.dart';
+import 'package:wasiet/Views/new_ad_views/NewAdStep2.dart';
+import 'package:wasiet/Views/new_ad_views/NewAdStep4.dart';
+import '../../Controllers/NewAdController.dart';
 import 'NewAdStep3.dart';
-import 'TestScreen1.dart';
-import 'TestScreen2.dart';
 
 class NewAdNavigationView extends StatelessWidget {
   NewAdNavigationView({Key? key}) : super(key: key);

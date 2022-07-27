@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../Controllers/NewAdController.dart';
-import '../Custom Widgets/NewAdInputField.dart';
+import '../../Controllers/NewAdController.dart';
+import '../../Custom Widgets/NewAdInputField.dart';
+import '../../app/Constants.dart';
 
 
 class NewAdStep3 extends StatelessWidget {
@@ -38,14 +39,16 @@ class NewAdStep3 extends StatelessWidget {
                 obligatory: false, numeric: true, function: () {}),
             NewAdInputField(text: 'Number of floors', dropdown: false , textController: newAdController.countryController,
                 obligatory: false, numeric: true, function: (){}),
-            NewAdInputField(text: 'mahallat', dropdown: false , textController: newAdController.regionController,
+            NewAdInputField(text: 'Mahallat', dropdown: false , textController: newAdController.regionController,
                 obligatory: false, numeric: true, function: (){}),
             NewAdInputField(text: 'Number of elevators', dropdown: false , textController: newAdController.cityController,
                 obligatory: false, numeric: true, function: (){}),
             NewAdInputField(text: 'Age of the estate', dropdown: false , textController: newAdController.streetController,
                 obligatory: false, numeric: true, function: (){}),
-            NewAdInputField(text: 'available', dropdown: true , textController: newAdController.streetController,
-                obligatory: false, function: (){}),
+            NewAdInputField(text: 'Available', dropdown: true , textController: newAdController.streetController,
+                obligatory: false, function: (){
+                  newAdController.showCheckListBottomSheet(Get.context, "Available", availableList);
+                }),
           ],
         ),
       ),

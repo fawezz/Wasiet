@@ -28,7 +28,6 @@ class _RadioListState extends State<RadioList> {
               setState(() {
                 widget.groupValue.value = i;
               });
-              print(widget.groupValue.value);
             },
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.w),

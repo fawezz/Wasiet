@@ -15,8 +15,8 @@ class ButtonBlueGradiant extends StatelessWidget {
       child: Container(
         width: Get.width * 0.88,
         height: Get.height * 0.07,
-        decoration: ShapeDecoration(
-          shape: const StadiumBorder(),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
@@ -25,7 +25,6 @@ class ButtonBlueGradiant extends StatelessWidget {
         ),
         child: MaterialButton(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: const StadiumBorder(),
           onPressed: function,
           child: Text(
             text,

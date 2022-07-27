@@ -44,7 +44,7 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
       children: [
         if(widget.label)...[
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.topLeft,
             child: Padding(
               padding: EdgeInsets.only(bottom: 8.h),
               child: Text(
@@ -68,13 +68,13 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
                     color: HexColor("#00B4EF"),
                       width: 2
                   ),
-                  borderRadius: BorderRadius.circular(25)
+                  borderRadius: BorderRadius.circular(25),
                 ),
                 child: FocusScope(
                   onFocusChange: (value){
                     setState(() {});
                     },
-                  child: Obx(() =>  TextField(
+                  child: TextField(
                     maxLines: widget.multiline? 8 : 1,
                     minLines: widget.multiline? 6 : 1,
                     onEditingComplete: (){setState(() {});},
@@ -85,6 +85,14 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
                       hintText: widget.text,
                       filled: widget.textController.value.text.isEmpty? true : false,
                       fillColor: HexColor("#F2F2F2"),
+                      prefix: widget.prefixIcon==true?
+                      Container(
+                        margin: EdgeInsets.only(right: 8),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                          child: Image.asset("assets/icons/x-white.png", scale: 3,)
+                      ) :null,
                       hintStyle: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -107,7 +115,6 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
                         fontSize: 14.sp),
                     onTap: widget.function,
                     onChanged: null,
-                  ),
                   ),
                 )
               )),

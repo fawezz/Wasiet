@@ -6,7 +6,7 @@ import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'dart:ui' as ui;
 import 'package:wasiet/Views/HomeView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
-import 'package:wasiet/Views/NewAdNavigationView.dart';
+import 'package:wasiet/Views/new_ad_views/NewAdNavigationView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/TestScreen1.dart';

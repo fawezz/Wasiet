@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/NewAdController.dart';
 import 'package:wasiet/Custom%20Widgets/NewAdInputField.dart';
-import 'package:wasiet/app/Constants.dart';
-
-import '../Controllers/NewAdController.dart';
 
 class NewAdStep2 extends StatelessWidget {
   const NewAdStep2({Key? key}) : super(key: key);

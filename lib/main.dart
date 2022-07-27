@@ -8,11 +8,13 @@ import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/ReportPersonView.dart';
 import 'package:wasiet/Views/SellerProfileView.dart';
+import 'package:wasiet/Views/settings_views/AboutView.dart';
+import 'package:wasiet/Views/settings_views/SettingsView.dart';
+import 'package:wasiet/Views/settings_views/TermsView.dart';
 
 import 'Views/HomeNavigationView.dart';
 import 'Views/ComplaintDetailsView.dart';
-import 'Views/NewAdNavigationView.dart';
-import 'Views/SettingsView.dart';
+import 'Views/new_ad_views/NewAdNavigationView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +48,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/complaintDetails', page: () => const ComplaintDetailsView()),
             GetPage(name: '/newAd', page: () => NewAdNavigationView()),
             GetPage(name: '/settings', page: () => const SettingsView()),
+            GetPage(name: '/terms', page: () => const TermsView()),
+            GetPage(name: '/about', page: () => const AboutView()),
 
           ],
         );
