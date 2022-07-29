@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/NewAdController.dart';
-import 'package:wasiet/Custom%20Widgets/NewAdInputField.dart';
+import 'package:wasiet/Custom_widgets/NewAdInputField.dart';
 import 'package:wasiet/app/Constants.dart';
 
 class NewAdStep1 extends StatelessWidget {
@@ -120,7 +120,7 @@ class NewAdStep1 extends StatelessWidget {
               style: TextStyle(color: HexColor("#00B4EF"), fontSize: 12.sp, fontWeight: FontWeight.w500,
               )
             ),
-            20.h.verticalSpace
+            60.h.verticalSpace
           ],
         ),
       ),

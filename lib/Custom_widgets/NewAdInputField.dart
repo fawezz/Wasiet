@@ -74,7 +74,7 @@ class _NewAdInputFieldState extends State<NewAdInputField> {
                   onFocusChange: (value){
                     setState(() {});
                     },
-                  child: TextField(
+                  child: TextFormField(
                     maxLines: widget.multiline? 8 : 1,
                     minLines: widget.multiline? 6 : 1,
                     onEditingComplete: (){setState(() {});},

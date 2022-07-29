@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wasiet/Controllers/NewAdController.dart';
-import 'package:wasiet/Custom%20Widgets/NewAdInputField.dart';
+import 'package:wasiet/Custom_widgets/NewAdInputField.dart';
 
 class NewAdStep2 extends StatelessWidget {
   const NewAdStep2({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class NewAdStep2 extends StatelessWidget {
             16.h.verticalSpace,
             NewAdInputField(text: "Identity of the announcer", dropdown: true, textController: newAdController.identityController,
                 obligatory: false, function: null),
-
+            60.h.verticalSpace,
           ],
         ),
       ),

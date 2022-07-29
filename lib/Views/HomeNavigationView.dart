@@ -46,11 +46,6 @@ class HomeNavigationView extends StatelessWidget {
                 const MyAdsView(),
                 NewAdNavigationView(),
                 ProfileView(connected: true,),
-                //TestScreen2(),
-
-                //mes annonces
-                //chat
-                //Profile
               ],
             ),
             //NAVBAR

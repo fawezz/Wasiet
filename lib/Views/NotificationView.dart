@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/NotificationController.dart';
-import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
+import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
 
 import '../models/NotificationModel.dart';
 

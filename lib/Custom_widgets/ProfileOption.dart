@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/HomeNavController.dart';
 
 class ProfileOption extends StatelessWidget {
   ProfileOption({Key? key, required this.text,required this.namedView}) : super(key: key);
@@ -17,6 +18,7 @@ class ProfileOption extends StatelessWidget {
         onTap: (){
           if(namedView == "/home"){
             //deconnect
+            Get.delete<HomeNavController>();
             Get.offAllNamed("/home");
           }else{
             Get.toNamed(namedView);

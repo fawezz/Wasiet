@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/AdCard.dart';
+import 'package:wasiet/Custom_widgets/AdCard.dart';
 
 import '../Controllers/HomeTabController.dart';
 import 'TestScreen1.dart';
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomeTabController _tabx = Get.put(HomeTabController());
+    final HomeTabController controller = Get.put(HomeTabController());
     Size size = MediaQuery.of(context).size;
 
     final double tabw = size.width * 0.1956;
@@ -117,9 +117,9 @@ class HomeView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(40.0),
               ),
               onTap: (int x) {
-                _tabx.updateSelectedIndex();
+                controller.updateSelectedIndex();
               },
-              controller: _tabx.controller,
+              controller: controller.tabController,
               tabs: [
                 Obx(
                       () => Container(
@@ -127,7 +127,7 @@ class HomeView extends StatelessWidget {
                     height: tabh.sp,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: _tabx.selectedTabIndex.value != 0
+                        color: controller.selectedTabIndex.value != 0
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
@@ -149,7 +149,7 @@ class HomeView extends StatelessWidget {
                     height: tabh.sp,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: _tabx.selectedTabIndex.value != 1
+                        color: controller.selectedTabIndex.value != 1
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
@@ -171,7 +171,7 @@ class HomeView extends StatelessWidget {
                     height: tabh.sp,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: _tabx.selectedTabIndex.value != 2
+                        color: controller.selectedTabIndex.value != 2
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
@@ -193,7 +193,7 @@ class HomeView extends StatelessWidget {
                       height: tabh.sp,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
-                          color: _tabx.selectedTabIndex.value != 3
+                          color: controller.selectedTabIndex.value != 3
                               ? Colors.white
                               : Colors.transparent),
                       child: Padding(
@@ -215,7 +215,7 @@ class HomeView extends StatelessWidget {
                     height: tabh.sp,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: _tabx.selectedTabIndex.value != 4
+                        color: controller.selectedTabIndex.value != 4
                             ? Colors.white
                             : Colors.transparent),
                     child: Padding(
@@ -236,7 +236,7 @@ class HomeView extends StatelessWidget {
                 Expanded(
                   child: TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
-                    controller: _tabx.controller,
+                    controller: controller.tabController,
                     children:  [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15.sp),

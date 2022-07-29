@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/NewAdController.dart';
-import 'package:wasiet/Custom%20Widgets/NewAdInputField.dart';
+import 'package:wasiet/Custom_widgets/NewAdInputField.dart';
 import '';
 
 class NewAdStep0 extends StatelessWidget {

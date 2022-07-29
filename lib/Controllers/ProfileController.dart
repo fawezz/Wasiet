@@ -10,30 +10,22 @@ class ProfileController extends GetxController with GetTickerProviderStateMixin 
   late Animation<Offset> offsetAnimation;
   late Animation colorAnimation;
 
+  Rx<HexColor> switchColor = HexColor("#1CD159").obs;
+
   late Color btnColor;
   @override
   void onInit() {
+
+    //test if notifications are allowed and set color accordingly
+    switchColor.value = HexColor("#9E9E9E");
+
     super.onInit();
-    toggleController = AnimationController (duration: Duration (milliseconds: 500), vsync: this,);
+    toggleController = AnimationController (duration: const Duration (milliseconds: 500), vsync: this,);
     offsetAnimation = Tween<Offset> (begin: Offset.zero,
       end: const Offset (1.5, 0.0),
     ).animate(CurvedAnimation (parent: toggleController, // Tween
         curve: Curves.linear));
-
-    /*colorController = AnimationController(vsync: this,
-      duration: Duration (milliseconds: 400),
-      value: 1.0,
-    );
-
-    colorAnimation = ColorTween(
-      begin: HexColor("#1CD159"),
-      end: Colors.grey,
-    ).animate(colorController);
-*/
-
-//HexColor("#1CD159").withOpacity(0.4),
   }
-
 
   @override
   void onClose() {
@@ -44,13 +36,12 @@ class ProfileController extends GetxController with GetTickerProviderStateMixin 
   void toggleButton() {
     if(toggleController.isDismissed){
       toggleController.animateTo(0.5, curve: Curves.linear);
-      //colorController.forward();
-
+      switchColor.value = HexColor("#1CD159");
     }else{
       toggleController.reverse();
-      //colorController.reverse();
+      switchColor.value = HexColor("#9E9E9E");
     }
-    print(toggleController.status);
+    //save notification state
   }
 
 }

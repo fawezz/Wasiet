@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/InfoField.dart';
+import 'package:wasiet/Custom_widgets/InfoField.dart';
 
 import '../Controllers/ComplaintDetailsController.dart';
-import '../Custom Widgets/PictureCard.dart';
+import '../Custom_widgets/PictureCard.dart';
 
 class ComplaintDetailsView extends StatelessWidget {
   const ComplaintDetailsView({Key? key}) : super(key: key);

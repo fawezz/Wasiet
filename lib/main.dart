@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wasiet/Controllers/MyAdsController.dart';
+import 'package:wasiet/Views/detail_ad_views/DetailAdView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/MyComplaintsView.dart';
 import 'package:wasiet/Views/NotificationView.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Wasiet',
           theme: ThemeData(primarySwatch: Colors.blue,
+          fontFamily: "Cairo",
           scaffoldBackgroundColor: Colors.white,
           canvasColor: Colors.transparent
           ),
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/about', page: () => const AboutView()),
             GetPage(name: '/contactUs', page: () => const ContactUsView()),
             GetPage(name: '/login', page: () => const LoginView()),
+            GetPage(name: '/detailAd', page: () => const DetailAdView()),
+
 
           ],
         );

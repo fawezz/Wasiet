@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
+import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep0.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep1.dart';
 import 'package:wasiet/Views/new_ad_views/NewAdStep2.dart';

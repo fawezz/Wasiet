@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wasiet/Custom%20Widgets/ProfileOption.dart';
+import 'package:wasiet/Custom_widgets/ProfileOption.dart';
 
 import '../Controllers/ProfileController.dart';
 
@@ -13,7 +13,7 @@ class ProfileView extends StatelessWidget {
    //_toggleController
   @override
   Widget build(BuildContext context) {
-    final ProfileController _profilex = Get.put(ProfileController());
+    final ProfileController controller = Get.put(ProfileController());
 
     return SafeArea(
         child: Scaffold(
@@ -154,40 +154,41 @@ class ProfileView extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: (){
-                              _profilex.toggleButton();
+                              controller.toggleButton();
                             },
                             child: Stack(
                               children: [
-                                Container(
+                                Obx(() => Container(
                                   height: 30.sp,
                                   width: 50.sp,
                                   decoration: BoxDecoration(
-                                    color: HexColor("#1CD159").withOpacity(0.4),
+                                    color: controller.switchColor.value.withOpacity(0.4),
                                     borderRadius: BorderRadius.circular(20)
                                   ),
                                 ),
+                                ),
                                 SlideTransition(
-                                  position: _profilex.offsetAnimation,
-                                  child: Container(
+                                  position: controller.offsetAnimation,
+                                  child: Obx(() => Container(
                                     height: 30.sp,
                                     width: 30.sp,
                                     decoration: BoxDecoration(
-                                        color: HexColor("#1CD159"),
+                                        color: controller.switchColor.value,
                                         borderRadius: BorderRadius.circular(20)
                                     ),
+                                  ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-
                         ],
                       ),
                     ),
                   ),
                 ),
                 ProfileOption(text: "Exit", namedView: "/home"),
-
+                120.h.verticalSpace,
               ],
             ),
           ),

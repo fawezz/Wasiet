@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class HomeTabController extends GetxController with GetSingleTickerProviderStateMixin {
   var selectedTabIndex = 0 .obs;
+  late TabController tabController;
+
 
   void updateSelectedIndex() {
-    selectedTabIndex.value = controller.index;
+    selectedTabIndex.value = tabController.index;
   }
 
   var navBarIndex = 0 .obs;
@@ -16,17 +18,15 @@ class HomeTabController extends GetxController with GetSingleTickerProviderState
   }
 
 
-  late TabController controller;
-
   @override
   void onInit() {
     super.onInit();
-    controller = TabController(vsync: this, length: 5);
+    tabController = TabController(vsync: this, length: 5);
   }
 
   @override
   void onClose() {
-    controller.dispose();
+    tabController.dispose();
     super.onClose();
   }
 }

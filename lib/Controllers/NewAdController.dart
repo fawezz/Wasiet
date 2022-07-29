@@ -8,13 +8,13 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wasiet/Controllers/HomeNavController.dart';
-import 'package:wasiet/Custom%20Widgets/ButtonOutline.dart';
-import 'package:wasiet/Custom%20Widgets/CheckList.dart';
-import 'package:wasiet/Custom%20Widgets/SearchField.dart';
+import 'package:wasiet/Custom_widgets/ButtonBlueGradiant.dart';
+import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
+import 'package:wasiet/Custom_widgets/CheckList.dart';
+import 'package:wasiet/Custom_widgets/RadioList.dart';
+import 'package:wasiet/Custom_widgets/SearchField.dart';
 import 'package:wasiet/app/Constants.dart';
 
-import '../Custom Widgets/ButtonBlueGradiant.dart';
-import '../Custom Widgets/RadioList.dart';
 
 
 class NewAdController extends GetxController with GetSingleTickerProviderStateMixin {

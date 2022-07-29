@@ -103,7 +103,7 @@ class AdElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0, left: 4, right: 4),
       child: GestureDetector(
-        onTap: () => {print("a")},
+        onTap: () => {Get.toNamed('/detailAd')},
         child: Container(
           color: Colors.transparent,
           height: size.height * 0.17,
@@ -237,6 +237,7 @@ class AdElement extends StatelessWidget {
                         Text(
                           "4.5",
                           style: TextStyle(
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                             fontSize: 13.sp,
                           ),
@@ -246,13 +247,13 @@ class AdElement extends StatelessWidget {
                         Text(
                           "(12)",
                           style: TextStyle(
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.normal,
                             fontSize: 13.sp,
                           ),
                         )
                       ],
                     ),
-                    8.sp.verticalSpace,
                     Text(
                       "5 floors villa",
                       textAlign: TextAlign.left,
@@ -261,23 +262,22 @@ class AdElement extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    4.sp.verticalSpace,
                     Text(
                       "20-07-2021",
                       style: TextStyle(
+                          fontFamily: "Roboto",
                           fontSize: 10.sp, color: HexColor("#999999")),
                     ),
-                    10.sp.verticalSpace,
                     Text(
                       "Al Bukayriyah - Al Bukayriyah",
                       style: TextStyle(
                         fontSize: 14.sp,
                       ),
                     ),
-                    10.sp.verticalSpace,
                     Text(
                       r"150,000$",
                       style: TextStyle(
+                        fontFamily: "Roboto",
                         fontWeight: FontWeight.bold,
                         fontSize: 16.sp,
                         color: HexColor("#0066B8"),

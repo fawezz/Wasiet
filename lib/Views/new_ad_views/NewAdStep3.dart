@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/NewAdController.dart';
+import 'package:wasiet/Custom_widgets/NewAdInputField.dart';
+import 'package:wasiet/app/Constants.dart';
 
-import '../../Controllers/NewAdController.dart';
-import '../../Custom Widgets/NewAdInputField.dart';
-import '../../app/Constants.dart';
 
 
 class NewAdStep3 extends StatelessWidget {
@@ -49,6 +49,7 @@ class NewAdStep3 extends StatelessWidget {
                 obligatory: false, function: (){
                   newAdController.showCheckListBottomSheet(Get.context, "Available", availableList);
                 }),
+            60.h.verticalSpace,
           ],
         ),
       ),

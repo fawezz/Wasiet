@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:wasiet/Custom%20Widgets/ButtonBlueGradiant.dart';
+import 'package:wasiet/Custom_widgets/ButtonBlueGradiant.dart';
 
 import '../Controllers/ReportPersonController.dart';
-import '../Custom Widgets/PictureCard.dart';
+import '../Custom_widgets/PictureCard.dart';
 
 class ReportPersonView extends StatelessWidget {
   const ReportPersonView({Key? key}) : super(key: key);
