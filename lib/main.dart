@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:wasiet/Controllers/MyAdsController.dart';
 import 'package:wasiet/Views/detail_ad_views/DetailAdView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/MyComplaintsView.dart';

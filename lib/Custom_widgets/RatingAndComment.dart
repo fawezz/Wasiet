@@ -14,50 +14,58 @@ class RatingAndComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-        children: [
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 27.sp,
-                foregroundImage:
-                Image.asset(userImage).image,
-              ),
-              10.w.horizontalSpace,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.h),
+      child: Wrap(
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 27.sp,
+                  foregroundImage:
+                  Image.asset(userImage).image,
+                ),
+                10.w.horizontalSpace,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                RatingStars(rating: rating),
+              ],
+            ),
+            if(comment.isNotEmpty)...[
+              Padding(
+                padding: EdgeInsets.only(top: 8.h),
+                child: Text(
+                  comment,
+                  style: TextStyle(
+                      color: Colors.black,
                       fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    date,
-                    style: TextStyle(
-                      fontSize: 10.sp,
                       fontWeight: FontWeight.normal,
-                    ),
+                      height: 1.3
                   ),
-                ],
+                  maxLines: 10,
+                ),
               ),
-              Spacer(),
-              RatingStars(rating: rating),
-            ],
-          ),
-          if(comment.isNotEmpty)...[
-            Text(
-              comment,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.normal),
-              maxLines: 10,
-            )
-          ]
-        ],
+            ]
+          ],
+      ),
     );
   }
 }

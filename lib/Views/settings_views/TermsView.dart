@@ -74,6 +74,7 @@ class TermsView extends StatelessWidget {
             backgroundColor: Colors.white,
           ),
           body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: EdgeInsets.all(24.w),
               child: Column(

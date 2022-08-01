@@ -63,7 +63,7 @@ class MyComplaintsView extends StatelessWidget {
       body: Container(
         height: Get.height * 0.9,
         width: Get.width * 0.92,
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
         child: Padding(
           padding: EdgeInsets.only(top: 24.sp, left: 8, right: 8),
           child: SizedBox(
@@ -78,7 +78,7 @@ class MyComplaintsView extends StatelessWidget {
                       Get.toNamed('/complaintDetails');
                     },
                     child: Container(
-                      height: Get.height * 0.136,
+                      height: Get.height * 0.14,
                         margin: EdgeInsets.only(top: 8.sp, bottom: 16.sp),
                         padding: EdgeInsets.all(11.sp),
                         decoration: BoxDecoration(
@@ -128,6 +128,7 @@ class MyComplaintsView extends StatelessWidget {
                               4.sp.verticalSpace,
                               Text("2021-07-20",
                                 style: TextStyle(
+                                  fontFamily: 'Roboto',
                                   fontWeight: FontWeight.normal,
                                   fontSize: 10.sp,
                                 ),
