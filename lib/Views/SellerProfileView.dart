@@ -25,6 +25,8 @@ class SellerProfileView extends StatelessWidget {
               },
               icon: Image.asset(
                 "assets/icons/arrowBack.png",
+                height: 27.h,
+                width: 27.w,
                 fit: BoxFit.fill,
               )),
         ),
@@ -70,28 +72,36 @@ class SellerProfileView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 55.sp,
-                  width: 69.sp,
+                  height: 55.h,
+                  width: 69.w,
                   decoration: BoxDecoration(
                     color: HexColor("#00B4EF"),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Image.asset(
-                    "assets/icons/message.png",
-                    scale: 3.5,
+                  child: Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: Image.asset(
+                      "assets/icons/message.png",
+                      height: 26.w,
+                      width: 26.w,
+                    ),
                   ),
                 ),
                 10.sp.horizontalSpace,
                 Container(
-                  height: 55.sp,
-                  width: 69.sp,
+                  height: 55.h,
+                  width: 69.w,
                   decoration: BoxDecoration(
                     color: HexColor("##0066B8"),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Image.asset(
-                    "assets/icons/phone.png",
-                    scale: 3.5,
+                  child: Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: Image.asset(
+                      "assets/icons/phone.png",
+                      height: 26.w,
+                      width: 26.w,
+                    ),
                   ),
                 )
               ],
@@ -125,7 +135,7 @@ class SellerProfileView extends StatelessWidget {
                   )
                 : Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
-                    height: Get.height * 0.2457,
+                    height: Get.height * 0.26,
                     width: Get.width * 0.9565,
                     decoration: BoxDecoration(
                       color: HexColor("#F5F5F5"),
@@ -136,7 +146,7 @@ class SellerProfileView extends StatelessWidget {
                         Container(
                           height: Get.height * 0.172,
                           width: Get.width * 0.92,
-                          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               physics: const PageScrollPhysics(parent: BouncingScrollPhysics()),
@@ -157,45 +167,45 @@ class SellerProfileView extends StatelessWidget {
                           ),
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                EdgeInsets.symmetric(horizontal: 4.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  height: 6,
-                                  width: 6,
+                                  height: 6.w,
+                                  width: 6.w,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
                                 Container(
-                                  height: 7,
-                                  width: 7,
+                                  height: 7.w,
+                                  width: 7.w,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
                                 Container(
-                                  height: 9,
-                                  width: 9,
+                                  height: 9.w,
+                                  width: 9.w,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
                                 Container(
-                                  height: 7,
-                                  width: 7,
+                                  height: 7.w,
+                                  width: 7.w,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
                                 Container(
-                                  height: 6,
-                                  width: 6,
+                                  height: 6.w,
+                                  width: 6.w,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(50),

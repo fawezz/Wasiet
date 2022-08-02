@@ -90,12 +90,14 @@ class ProfileView extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(
-                        height: Get.width * 0.25,
-                        width: Get.width * 0.25,
+                        height: Get.width * 0.25.w,
+                        width: Get.width * 0.25.w,
                         child: CircleAvatar(
                           radius: Get.width * 0.116,
                           backgroundColor: HexColor("#00B4EF"),
                           child: Image.asset("assets/icons/user-white.png",
+                            height: 55.h,
+                            width: 55.w,
                             scale: 3.4,
                           ),
                         ),
@@ -103,11 +105,11 @@ class ProfileView extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: Get.width*0.099),
                         child: SizedBox(
-                          width: Get.width *0.5144,
+                          width: Get.width *0.5,
                           height: Get.height* 0.0675,
                           child: ElevatedButton(
                               onPressed: () {
-                                Get.toNamed("login");
+                                Get.toNamed("/login");
                               },
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all<Color>(Colors.white),

@@ -99,23 +99,22 @@ class AdElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = Get.size;
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0, left: 4, right: 4),
       child: GestureDetector(
         onTap: () => {Get.toNamed('/detailAd')},
         child: Container(
           color: Colors.transparent,
-          height: size.height * 0.17,
-          width: size.width * 0.884,
+          height: Get.height * 0.17,
+          width: Get.width * 0.884,
           child: Row(
             children: [
               Stack(
                 children: [
                   Container(
                     //image
-                    height: size.width * 0.338,
-                    width: size.width * 0.338,
+                    height: Get.width * 0.338,
+                    width: Get.width * 0.338,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(25),
@@ -134,8 +133,8 @@ class AdElement extends StatelessWidget {
                           ///////////////////edit button
                           isEditable
                               ? SizedBox(
-                                  width: size.width * 0.0748,
-                                  height: size.width * 0.0748,
+                                  width: Get.width * 0.0748,
+                                  height: Get.width * 0.0748,
                                   child: GestureDetector(
                                     onTap: () =>
                                         {_showModlBottomSheet(Get.context)},
@@ -153,14 +152,14 @@ class AdElement extends StatelessWidget {
                                 )
                               : Container(),
                           SizedBox(
-                            width: size.width * 0.0966,
-                            height: size.width * 0.0966,
+                            width: Get.width * 0.0966,
+                            height: Get.width * 0.0966,
                             child: GestureDetector(
                               onTap: () => {
                                 Get.toNamed("sellerProfile")
                               },
                               child: Container(
-                                padding: EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(2),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
@@ -191,8 +190,8 @@ class AdElement extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 8.5),
                           child: Container(
                             //test which color
-                            height: size.height * 0.028,
-                            width: size.width * 0.1014,
+                            height: Get.height * 0.028,
+                            width: Get.width * 0.1014,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: HexColor("#00B4EF"),
@@ -219,7 +218,7 @@ class AdElement extends StatelessWidget {
                         ),
                         //else
                         //Image.asset("assets/icons/outlineHeart.png"),
-                        (size.width * 0.16).horizontalSpace,
+                        (Get.width * 0.16).horizontalSpace,
                         //star
                         Padding(
                           padding: const EdgeInsets.symmetric(

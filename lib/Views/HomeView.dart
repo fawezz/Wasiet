@@ -66,15 +66,16 @@ class HomeView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding:  EdgeInsets.only(left: 30.sp),
                 child: SizedBox(
-                  width: size.width * 0.65,
-                  height: size.width * 0.13,
+                  width: size.width * 0.65.w,
+                  height: size.width * 0.13.h,
                   child: TextField(
-                    style: const TextStyle(
-                        fontSize: 14.0, color: Colors.black,),
+                    style: TextStyle(
+                        fontSize: 14.0.sp, color: Colors.black,),
                     decoration: InputDecoration(
                       hintText: "search for something",
                       border: OutlineInputBorder(
@@ -83,7 +84,11 @@ class HomeView extends StatelessWidget {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      prefixIcon: Image.asset('assets/icons/search.png'),
+                      prefixIcon: SizedBox(
+                        child: Image.asset('assets/icons/search.png',
+                          scale: 1.3,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -95,6 +100,8 @@ class HomeView extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/icons/filtre.png',
+                    height: 26.h,
+                    width: 26.w,
                     fit: BoxFit.fill,
                   ),
                 ),

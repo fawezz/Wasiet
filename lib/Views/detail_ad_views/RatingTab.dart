@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/DetailAdController.dart';
 import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
 import 'package:wasiet/Custom_widgets/RatingAndComment.dart';
 import 'package:wasiet/Custom_widgets/RatingBar.dart';
@@ -10,6 +12,7 @@ class RatingTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DetailAdController controller = Get.find();
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Column(
@@ -40,20 +43,23 @@ class RatingTab extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: HexColor("#00B4EF").withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: Image.asset("assets/icons/star-rounded-edges.png",
-                            scale: 3.8,).image),
                       ),
-                      child: Center(
-                        child: Text(
-                          "4.5",
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 26.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Image.asset("assets/icons/star-rounded-edges.png",
+                            height: 80.h,
+                            width: 78.w,
                           ),
-                        ),
+                          Text(
+                            "4.5",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 26.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),]
                       ),
                     ),
                     Text("4,5 out of 5",
@@ -75,7 +81,12 @@ class RatingTab extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 16.h),
-            child: ButtonOutline(text: "Add Comment", width: 88.6.sw, function: (){}),
+            child: ButtonOutline(
+                text: "Add Comment",
+                width: 88.6.sw,
+                function: (){
+                  controller.showNewRatingBottomSheet(Get.context);
+                }),
           ),
           if( true )...[
             const RatingAndComment(comment: "test test ", rating: 4, date: '20-07-2022', name: "yacoub dbiaza", userImage: "assets/icons/seller.jpg",),
@@ -89,7 +100,6 @@ class RatingTab extends StatelessWidget {
               fontSize: 16,
             ),)
           ]
-
         ],
       ),
     );

@@ -28,6 +28,8 @@ class NotificationView extends StatelessWidget {
                   },
                   icon: Image.asset(
                     "assets/icons/arrowBack.png",
+                    height: 27.h,
+                    width: 27.w,
                     fit: BoxFit.fill,
                   )),
             ),
@@ -68,71 +70,74 @@ class NotificationView extends StatelessWidget {
           ),
           body: Center(
             child: Padding(
-              padding: EdgeInsets.only(top:16.sp, left: 16.sp, right: 16.sp),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ButtonOutline(text: "Delete all notifications",
-                    width: Get.width *0.8816,
-                    height: Get.height* 0.0675,
-                    function: () => {},
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 24.sp, left: 8, right: 8),
-                    child: SizedBox(
-                        height: Get.height * 0.78,
-                        child:
-                        ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: _xController.list.length,
-                        itemBuilder: (context, index) {
-                          NotificationModel notif = _xController.list.elementAt(index);
-                          return Column(
-                            children: [
-                              Text("${_xController.fWeekDays.elementAt(notif.date.weekday-1)} ${notif.date.day} "
-                                  "${_xController.fMonths.elementAt(notif.date.month-1)}."
-                                  " ${notif.date.hour<10? "0${notif.date.hour}" :notif.date.hour }:"
-                                  "${notif.date.minute<10? "0${notif.date.minute}": notif.date.minute}",
-                                style: TextStyle(
-                                  fontSize: 12.sp,
-                                  color: HexColor("#ABABAC"),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: 8.sp, bottom: 16.sp),
-                                padding: EdgeInsets.all(11.sp),
-                                decoration: BoxDecoration(
-                                  color: HexColor("#0066B8").withOpacity(0.06),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 5.0, bottom: 2),
-                                      child: Text(notif.title,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        fontSize: 14.sp,
-                                        ),
-                                      ),
-                                    ),
-                                Text(notif.body,
+              padding: EdgeInsets.only(top:16.h, left: 16.w, right: 16.w),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ButtonOutline(text: "Delete all notifications",
+                      width: Get.width *0.8816,
+                      height: Get.height* 0.0675,
+                      function: () => {},
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 24.sp, left: 8, right: 8),
+                      child: SizedBox(
+                          height: Get.height * 0.77,
+                          child:
+                          ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: _xController.list.length,
+                          itemBuilder: (context, index) {
+                            NotificationModel notif = _xController.list.elementAt(index);
+                            return Column(
+                              children: [
+                                Text("${_xController.fWeekDays.elementAt(notif.date.weekday-1)} ${notif.date.day} "
+                                    "${_xController.fMonths.elementAt(notif.date.month-1)}."
+                                    " ${notif.date.hour<10? "0${notif.date.hour}" :notif.date.hour }:"
+                                    "${notif.date.minute<10? "0${notif.date.minute}": notif.date.minute}",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 14.sp,
+                                    fontSize: 12.sp,
+                                    color: HexColor("#ABABAC"),
                                   ),
                                 ),
-                                ]
-                                )
-                              ),
-                            ],
-                          );
-                        }
-                      ,)
+                                Container(
+                                  margin: EdgeInsets.only(top: 8.sp, bottom: 16.sp),
+                                  padding: EdgeInsets.all(11.sp),
+                                  decoration: BoxDecoration(
+                                    color: HexColor("#0066B8").withOpacity(0.06),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 5.0, bottom: 2),
+                                        child: Text(notif.title,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          fontSize: 14.sp,
+                                          ),
+                                        ),
+                                      ),
+                                  Text(notif.body,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  ]
+                                  )
+                                ),
+                              ],
+                            );
+                          }
+                        ,),
+                      ),
                     ),
-                  )
-                ],
+                    50.h.verticalSpace,
+                  ],
+                ),
               ),
             ),
           ),

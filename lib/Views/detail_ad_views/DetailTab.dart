@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/DetailAdController.dart';
 import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
 import 'package:wasiet/Custom_widgets/TechnicalInfoField.dart';
 
@@ -10,6 +11,7 @@ class DetailTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DetailAdController controller = Get.find();
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Padding(

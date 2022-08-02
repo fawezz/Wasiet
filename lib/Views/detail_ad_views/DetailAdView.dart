@@ -18,6 +18,7 @@ class DetailAdView extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: true,
             appBar: AppBar(
               leadingWidth: 100,
               automaticallyImplyLeading: false,
@@ -31,6 +32,8 @@ class DetailAdView extends StatelessWidget {
                     },
                     icon: Image.asset(
                       "assets/icons/arrowBack.png",
+                      height: 27.h,
+                      width: 27.w,
                       fit: BoxFit.fill,
                     )),
               ),
@@ -247,28 +250,36 @@ class DetailAdView extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 55.sp,
-                            width: 69.sp,
+                            height: 55.h,
+                            width: 69.w,
                             decoration: BoxDecoration(
                               color: HexColor("##0066B8"),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Image.asset(
-                              "assets/icons/phone.png",
-                              scale: 3.5,
+                            child: Padding(
+                              padding: EdgeInsets.all(10.w),
+                              child: Image.asset(
+                                "assets/icons/phone.png",
+                                height: 26.w,
+                                width: 26.w,
+                              ),
                             ),
                           ),
                           10.sp.horizontalSpace,
                           Container(
-                            height: 55.sp,
-                            width: 69.sp,
+                            height: 55.h,
+                            width: 69.w,
                             decoration: BoxDecoration(
                               color: HexColor("#00B4EF"),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Image.asset(
-                              "assets/icons/message.png",
-                              scale: 3.5,
+                            child: Padding(
+                              padding: EdgeInsets.all(10.w),
+                              child: Image.asset(
+                                "assets/icons/message.png",
+                                height: 26.w,
+                                width: 26.w,
+                              ),
                             ),
                           ),
                         ],

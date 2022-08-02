@@ -435,6 +435,8 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
         });
   }
 
+
+
   @override
   void onInit() {
     super.onInit();

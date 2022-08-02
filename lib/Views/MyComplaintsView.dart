@@ -22,6 +22,8 @@ class MyComplaintsView extends StatelessWidget {
               },
               icon: Image.asset(
                 "assets/icons/arrowBack.png",
+                height: 27.h,
+                width: 27.w,
                 fit: BoxFit.fill,
               )),
         ),
