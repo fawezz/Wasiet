@@ -28,7 +28,7 @@ class NewAdStep2 extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 14.sp,
                     height: 1.4,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),

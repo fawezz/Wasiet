@@ -8,7 +8,8 @@ import 'package:wasiet/Views/NotificationView.dart';
 import 'package:wasiet/Views/ProfileView.dart';
 import 'package:wasiet/Views/ReportPersonView.dart';
 import 'package:wasiet/Views/SellerProfileView.dart';
-import 'package:wasiet/Views/login_views/LoginView.dart';
+import 'package:wasiet/Views/login_views/PersonalInfoView.dart';
+import 'package:wasiet/Views/login_views/SignUpView.dart';
 import 'package:wasiet/Views/settings_views/AboutView.dart';
 import 'package:wasiet/Views/settings_views/ContactUsView.dart';
 import 'package:wasiet/Views/settings_views/SettingsView.dart';
@@ -16,6 +17,7 @@ import 'package:wasiet/Views/settings_views/TermsView.dart';
 
 import 'Views/HomeNavigationView.dart';
 import 'Views/ComplaintDetailsView.dart';
+import 'Views/login_views/SignUpVerificationView.dart';
 import 'Views/new_ad_views/NewAdNavigationView.dart';
 
 void main() {
@@ -54,8 +56,12 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/terms', page: () => const TermsView()),
             GetPage(name: '/about', page: () => const AboutView()),
             GetPage(name: '/contactUs', page: () => const ContactUsView()),
-            GetPage(name: '/login', page: () => const LoginView()),
             GetPage(name: '/detailAd', page: () => const DetailAdView()),
+            GetPage(name: '/signUp', page: () => const LoginView()),
+            GetPage(name: '/signUpVerification', page: () => const SignUpVerificationView()),
+            GetPage(name: '/personalInfo', page: () => const PersonalInfoView()),
+
+
 
 
           ],

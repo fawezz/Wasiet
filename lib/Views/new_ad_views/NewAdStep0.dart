@@ -60,7 +60,7 @@ class NewAdStep0 extends StatelessWidget {
                               style: TextStyle(
                                   color: HexColor("#0A3C5F"),
                                   fontSize: 18.sp,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ]),
@@ -85,7 +85,7 @@ class NewAdStep0 extends StatelessWidget {
                               style: TextStyle(
                                   color: HexColor("#0A3C5F"),
                                   fontSize: 18.sp,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ]),

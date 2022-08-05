@@ -92,7 +92,7 @@ class ComplaintDetailsView extends StatelessWidget {
                         "foulen ben foulen",
                         style: TextStyle(
                           fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       7.sp.verticalSpace,
@@ -117,7 +117,7 @@ class ComplaintDetailsView extends StatelessWidget {
                   child: Text('Complaint Details',
                     style: TextStyle(
                       fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -137,7 +137,7 @@ class ComplaintDetailsView extends StatelessWidget {
                         style: TextStyle(
                             height: 1.4,
                             color: Colors.black,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                             fontSize: 14.sp
                         ),
                       ),
@@ -213,7 +213,7 @@ class ComplaintDetailsView extends StatelessWidget {
                             style: TextStyle(
                                 height: 1.4,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 14.sp
                             ),
                           ),

@@ -91,7 +91,7 @@ class ReportPersonView extends StatelessWidget {
                         "foulen ben foulen",
                         style: TextStyle(
                           fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       7.sp.verticalSpace,
@@ -118,7 +118,7 @@ class ReportPersonView extends StatelessWidget {
                           "Subject",
                           style: TextStyle(
                             fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -143,7 +143,7 @@ class ReportPersonView extends StatelessWidget {
                               style: TextStyle(
                                   decoration: TextDecoration.none,
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 14.sp),
                             ),
                           )),
@@ -163,7 +163,7 @@ class ReportPersonView extends StatelessWidget {
                           "Report details",
                           style: TextStyle(
                             fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -189,7 +189,7 @@ class ReportPersonView extends StatelessWidget {
                               style: TextStyle(
                                   decoration: TextDecoration.none,
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 14.sp),
                             ),
                           )),

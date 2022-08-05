@@ -112,7 +112,7 @@ class HomeView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: TabBar(
-              labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               labelPadding: const EdgeInsets.only(right: 5, left: 5),
               labelColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.label,

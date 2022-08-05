@@ -53,7 +53,7 @@ class SellerProfileView extends StatelessWidget {
                       "foulen ben foulen",
                       style: TextStyle(
                         fontSize: 22.sp,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     7.sp.verticalSpace,
@@ -118,7 +118,7 @@ class SellerProfileView extends StatelessWidget {
                 child: Text(
                   'Previously shared',
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       fontSize: 18.sp,
                       color: HexColor("#0066B8")),
                 ),
@@ -129,7 +129,7 @@ class SellerProfileView extends StatelessWidget {
                 ? Text(
                     'none found',
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         fontSize: 14.sp,
                         color: HexColor("#B2B2B2")),
                   )

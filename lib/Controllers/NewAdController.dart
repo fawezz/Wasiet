@@ -23,6 +23,7 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final stepController = PageController(initialPage: 0);
   var stepIndex = 0 .obs;
   final numberOfSteps = 5;
+  late StateSetter stateSetter;
 
 
   void nextStepIndex() {
@@ -78,8 +79,8 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final unitPriceController = TextEditingController().obs;
   final totalPriceController = TextEditingController().obs;
       // radio buttons
-  static Rx<String> purpose = purposeList.first.obs;
-  static Rx<String> type = typeList.first.obs;
+  static Rx<String> purpose = cPurposeList.first.obs;
+  static Rx<String> type = cTypeList.first.obs;
   //step 3
   final northController = TextEditingController().obs;
   final southController = TextEditingController().obs;
@@ -88,7 +89,7 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final detailsController = TextEditingController().obs;
   final emailController = TextEditingController().obs;
   final identityController = TextEditingController().obs;
-  List checkedItems = [];
+  List checkedItems = [].obs;
 
 
 
@@ -298,7 +299,7 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   }
 
   showCheckListBottomSheet(context, String title,
-      List<String> choicesList,) {
+      List<String> choicesList, whenComplete) {
     RxList checkedItemsTemporary = [].obs;
     checkedItemsTemporary.addAll(checkedItems);
     showModalBottomSheet(
@@ -354,7 +355,9 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
               ),
             ]),
           );
-        });
+        }).whenComplete(() {
+          whenComplete.call();
+    });
   }
 
   confirmCancel(context, String title, String message) {

@@ -26,7 +26,7 @@ class NewAdStep1 extends StatelessWidget {
               obligatory: true,
               function: ()=> newAdController.showRadioBottomSheet(
                   Get.context, "Purpose of the announcement",
-                purposeList, NewAdController.purpose, newAdController.purposeController,
+                cPurposeList, NewAdController.purpose, newAdController.purposeController,
                 false
               ),
             ),
@@ -36,7 +36,7 @@ class NewAdStep1 extends StatelessWidget {
               obligatory: true,
               function: ()=> newAdController.showRadioBottomSheet(
                   Get.context, "Estate Type",
-                  typeList, NewAdController.type, newAdController.typeController,
+                  cTypeList, NewAdController.type, newAdController.typeController,
                   true
               ),
             ),
@@ -71,7 +71,7 @@ class NewAdStep1 extends StatelessWidget {
                   '*Total Price',
                   style: TextStyle(
                     fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -111,13 +111,13 @@ class NewAdStep1 extends StatelessWidget {
                   style: TextStyle(
                     color: HexColor("#707070"),
                     fontSize: 10.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ),
             Text("The total price will be automatically calculated once the area and the price price per square meter are set",
-              style: TextStyle(color: HexColor("#00B4EF"), fontSize: 12.sp, fontWeight: FontWeight.w500,
+              style: TextStyle(color: HexColor("#00B4EF"), fontSize: 12.sp, fontWeight: FontWeight.w600,
               )
             ),
             60.h.verticalSpace

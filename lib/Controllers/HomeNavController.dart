@@ -10,7 +10,7 @@ class HomeNavController extends GetxController with GetSingleTickerProviderState
   
   void updateNavBarIndex(int x) {
     navBarIndex.value = x;
-    pageController.animateToPage(x, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+    pageController.animateToPage(x, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
   }
   @override
   void onInit() {
