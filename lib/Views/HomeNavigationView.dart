@@ -44,8 +44,8 @@ class HomeNavigationView extends StatelessWidget {
               children:  [
                 const HomeView(),
                 const MyAdsView(),
-                NewAdNavigationView(),
-                ProfileView(connected: true,),
+                const TestScreen1(),
+                ProfileView(),
               ],
             ),
             //NAVBAR

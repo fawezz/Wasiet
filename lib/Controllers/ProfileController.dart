@@ -5,6 +5,8 @@ import 'package:hexcolor/hexcolor.dart';
 
 class ProfileController extends GetxController with GetTickerProviderStateMixin {
 
+  late bool connected ;
+
   late AnimationController toggleController;
   late AnimationController colorController;
   late Animation<Offset> offsetAnimation;

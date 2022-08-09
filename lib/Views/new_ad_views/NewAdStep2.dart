@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/NewAdController.dart';
 import 'package:wasiet/Custom_widgets/NewAdInputField.dart';
 
@@ -45,6 +46,7 @@ class NewAdStep2 extends StatelessWidget {
                   textController: newAdController.southController,function: null,),
               ],
             ),
+            16.h.verticalSpace,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -58,6 +60,39 @@ class NewAdStep2 extends StatelessWidget {
               ],
             ),
             16.h.verticalSpace,
+            /*Container(
+              height: 0.237.sh,
+              width: 0.884.sw,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                image: DecorationImage(
+                    image: Image.asset('assets/icons/map.png', color: Colors.white.withOpacity(0.8),
+                      fit: BoxFit.fill,
+                    ).image)
+              ),
+              child: Container(
+                color: Colors.white.withOpacity(0.8),
+                height: 0.075.sw,
+                width: 0.42.sh ,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // <-- Radius
+                    ),
+                     primary: Colors.white,
+                    fixedSize: Size(0.42.sh, 0.075.sw)
+                  ),
+                  child: Text('determine now',
+                  style: TextStyle(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.bold,
+                    color: HexColor("#0A3C5F")
+                  ),),
+                ),
+              ),
+            ),
+            16.h.verticalSpace,*/
             NewAdInputField(text: "More details", dropdown: false, textController: newAdController.detailsController,
                 obligatory: false, width: 0.88.sw, height: 0.188.sh, multiline: true, function: null),
             16.h.verticalSpace,

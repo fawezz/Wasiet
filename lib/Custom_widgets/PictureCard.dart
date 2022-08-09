@@ -12,7 +12,7 @@ class PictureCard extends StatelessWidget {
   final VoidCallback onCancel;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 0.22.sh,
       width: 0.42.sw,
       child: Stack(

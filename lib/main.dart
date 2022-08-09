@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:wasiet/Views/detail_ad_views/DetailAdView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/MyComplaintsView.dart';
@@ -20,7 +22,8 @@ import 'Views/ComplaintDetailsView.dart';
 import 'Views/login_views/SignUpVerificationView.dart';
 import 'Views/new_ad_views/NewAdNavigationView.dart';
 
-void main() {
+Future<void> main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           canvasColor: Colors.transparent
           ),
+          builder: EasyLoading.init(),
           home: const HomeNavigationView(),
           getPages: [
             GetPage(name: '/home', page: () => const HomeNavigationView()),
@@ -60,8 +64,6 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/signUp', page: () => const LoginView()),
             GetPage(name: '/signUpVerification', page: () => const SignUpVerificationView()),
             GetPage(name: '/personalInfo', page: () => const PersonalInfoView()),
-
-
 
 
           ],

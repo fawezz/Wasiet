@@ -23,8 +23,6 @@ class NewAdController extends GetxController with GetSingleTickerProviderStateMi
   final stepController = PageController(initialPage: 0);
   var stepIndex = 0 .obs;
   final numberOfSteps = 5;
-  late StateSetter stateSetter;
-
 
   void nextStepIndex() {
     //print(stepIndex);

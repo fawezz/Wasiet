@@ -58,7 +58,6 @@ class _NewAdStep3State extends State<NewAdStep3> {
                 }),
                StatefulBuilder(
                       builder: (BuildContext context,StateSetter setState){
-                        controller.stateSetter = setState;
                         return Wrap(
                           children: [
                             ...(controller.checkedItems).map((i) {

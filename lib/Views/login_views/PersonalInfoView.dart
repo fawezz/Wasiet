@@ -62,44 +62,60 @@ class PersonalInfoView extends StatelessWidget {
             children: [
               0.01.sh.verticalSpace,
               Center(
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      height: Get.width * 0.25.w,
-                      width: Get.width * 0.25.w,
-                      child: CircleAvatar(
-                        radius: Get.width * 0.116,
-                        backgroundColor: HexColor("#00B4EF"),
-                        child: Image.asset(
-                          "assets/icons/user-white.png",
-                          height: 55.h,
-                          width: 55.w,
-                          scale: 3.4,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      child: Container(
-                        height: Get.width * 0.0966,
-                        width: Get.width * 0.0966,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        padding: const EdgeInsets.all(2),
-                        child: CircleAvatar(
-                          radius: Get.width * 0.4347,
-                          backgroundColor: HexColor("#E9E9E9"),
-                          child: Image.asset(
-                            "assets/icons/camera.png",
-                            scale: 3.5,
+                child: StatefulBuilder(
+                  builder: (BuildContext context, void Function(void Function()) setState) {
+                    return Stack(
+                      children: [
+                        SizedBox(
+                          height: Get.width * 0.25.w,
+                          width: Get.width * 0.25.w,
+                          child: CircleAvatar(
+                            radius: Get.width * 0.116,
+                            backgroundColor: HexColor("#00B4EF"),
+                             backgroundImage:
+                             controller.profileImage != null?
+                            Image.file(
+                              controller.profileImage!.value,
+                              height:50,
+                              width:50 ,
+                            ).image:null,
+                            child: controller.profileImage == null ?Image.asset(
+                              "assets/icons/user-white.png",
+                              height: 55.h,
+                              width: 55.w,
+                            ): null,
                           ),
                         ),
-                      ),
-                    ),
-                  ],
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          child: GestureDetector(
+                            onTap: (){
+                              controller.showAddPictureBottomSheet(context, (){setState((){});});
+                            },
+                            child: Container(
+                              height: Get.width * 0.0966,
+                              width: Get.width * 0.0966,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              padding: const EdgeInsets.all(2),
+                              child: CircleAvatar(
+                                radius: Get.width * 0.4347,
+                                backgroundColor: HexColor("#E9E9E9"),
+                                child: Image.asset(
+                                  "assets/icons/camera.png",
+                                  scale: 3.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+
                 ),
               ),
               0.04.sh.verticalSpace,

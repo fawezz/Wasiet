@@ -7,21 +7,21 @@ import 'package:wasiet/Custom_widgets/ProfileOption.dart';
 import '../Controllers/ProfileController.dart';
 
 class ProfileView extends StatelessWidget {
-   ProfileView({Key? key, this.connected = false}) : super(key: key);
+   ProfileView({Key? key, }) : super(key: key);
 
-   bool connected;
+
    //_toggleController
   @override
   Widget build(BuildContext context) {
     final ProfileController controller = Get.put(ProfileController());
-
+    controller.connected = false;  // get connected user
     return SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                !connected?Padding(
+                controller.connected?Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32),
                   child: Row(
                     children: [
@@ -39,7 +39,7 @@ class ProfileView extends StatelessWidget {
                               ),
                             ),
                           ),
-                          connected?
+                          !controller.connected?
                           Positioned(
                             bottom: 0,
                             left: 0,
