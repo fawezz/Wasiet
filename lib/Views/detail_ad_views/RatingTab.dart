@@ -52,7 +52,7 @@ class RatingTab extends StatelessWidget {
                             width: 78.w,
                           ),
                           Text(
-                            "4.5",
+                            controller.post!.avgRating.toString(),
                             style: TextStyle(
                               fontFamily: "Roboto",
                               fontSize: 26.sp,
@@ -62,13 +62,13 @@ class RatingTab extends StatelessWidget {
                           ),]
                       ),
                     ),
-                    Text("4,5 out of 5",
+                    Text("${controller.post!.avgRating} out of 5",
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("(252 total)",
+                    Text("(${controller.post!.ratingNumber} total)",
                       style: TextStyle(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.normal,
@@ -88,11 +88,12 @@ class RatingTab extends StatelessWidget {
                   controller.showNewRatingBottomSheet(Get.context);
                 }),
           ),
-          if( true )...[
-            const RatingAndComment(comment: "test test ", rating: 4, date: '20-07-2022', name: "yacoub dbiaza", userImage: "assets/icons/seller.jpg",),
-            const RatingAndComment(comment: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ", rating: 4, date: '20-07-2022', name: "mohamed ferchichi", userImage: "assets/icons/seller.jpg",),
+          if( controller.post!.ratings.isNotEmpty )...[
+            ...(controller.post!.ratings).map((i) {
+              return RatingAndComment(comment: i.comment, rating: i.rating, date: i.date, name: i.userName, userImage: i.userImage,);
+            }).toList()
           ],
-          if ( true )...[
+          if (controller.post!.ratings.isEmpty )...[
             100.h.verticalSpace,
             const Text("There are no comments on this post yet.",
             style: TextStyle(

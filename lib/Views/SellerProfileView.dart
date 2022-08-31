@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'package:wasiet/Custom_widgets/InfoField.dart';
 
 import '../Custom_widgets/AdCard.dart';
@@ -154,7 +155,7 @@ class SellerProfileView extends StatelessWidget {
                               itemCount: 3,
                               itemBuilder: (context, index) {
                                 return AdElement(
-                                  isEditable: false,
+                                  isEditable: false, post: HomeNavController.postList.last,
                                 );
                               }),
                         ),

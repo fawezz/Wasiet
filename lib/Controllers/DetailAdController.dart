@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wasiet/Custom_widgets/ButtonBlueGradiant.dart';
+import 'package:wasiet/models/PostModel.dart';
 
 class DetailAdController extends GetxController with GetSingleTickerProviderStateMixin{
 
+  PostModel? post ;
   //image slider
   final pageController = PageController(initialPage: 0);
   RxInt indicator = 0.obs;
@@ -147,6 +150,14 @@ class DetailAdController extends GetxController with GetSingleTickerProviderStat
         });
   }
 
+  launchUri(String u) async {
+    Uri url = Uri.parse(u);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   void onInit() {
     super.onInit();
@@ -156,7 +167,9 @@ class DetailAdController extends GetxController with GetSingleTickerProviderStat
   @override
   void onClose() {
     tabController.dispose();
+    indicator = 0.obs;
     super.onClose();
+    dispose();
   }
 
   List<String> images = [

@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
+import 'package:wasiet/models/PostModel.dart';
+
+import '../Controllers/DetailAdController.dart';
 
 class AdElement extends StatelessWidget {
-  AdElement({Key? key, required this.isEditable}) : super(key: key);
+  AdElement({Key? key, required this.isEditable, required this.post}) : super(key: key);
+
   bool isEditable = false;
+  PostModel post;
+  var formatter = NumberFormat('#,###,###.00\$');
 
   _showModlBottomSheet(context) {
     showModalBottomSheet(
@@ -102,7 +109,11 @@ class AdElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0, left: 4, right: 4),
       child: GestureDetector(
-        onTap: () => {Get.toNamed('/detailAd')},
+        onTap: () {
+          DetailAdController c = Get.put(DetailAdController());
+          c.post = post;
+          Get.toNamed('/detailAd', arguments: {"post": post});
+        },
         child: Container(
           color: Colors.transparent,
           height: Get.height * 0.17,
@@ -120,10 +131,10 @@ class AdElement extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: Image.asset(
-                            "assets/icons/sale.jpg",
-                          ).image,
-                        )),
+                          image: FadeInImage.assetNetwork(
+                            placeholder: "assets/icons/img-placeholder.jpg",
+                            image: post.pictures.first,
+                          ).image),),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -156,7 +167,7 @@ class AdElement extends StatelessWidget {
                             height: Get.width * 0.0966,
                             child: GestureDetector(
                               onTap: () => {
-                                Get.toNamed("sellerProfile")
+                                Get.toNamed("/sellerProfile")
                               },
                               child: Container(
                                 padding: const EdgeInsets.all(2),
@@ -165,8 +176,9 @@ class AdElement extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.circular(40)),
                                 child: CircleAvatar(
-                                  child:
-                                      Image.asset("assets/icons/user.png"),
+                                  backgroundImage:
+                                    Image.network(post.sellerPicture!).image
+                                      //Image.asset("assets/icons/user.png"),
                                 ),
                               ),
                             ),
@@ -190,16 +202,30 @@ class AdElement extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 8.5),
                           child: Container(
                             //test which color
-                            height: Get.height * 0.028,
-                            width: Get.width * 0.1014,
+                            height: Get.height * 0.032,
+                            width: Get.width * 0.125,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: HexColor("#00B4EF"),
+                              color: (() {
+                                switch(post.category) {
+                                  case "rent": {
+                                    return HexColor("#00B4EF");
+                                  }
+                                  case "sell": {
+                                    return HexColor("#FF4B70");
+                                  }
+                                  case "exchange": {
+                                    return HexColor("#7951FF");
+                                  }
+                                  default: {
+                                    return HexColor("#00B4EF");
+                                  }
+                                }
+                              }()),
                               borderRadius: BorderRadius.circular(45),
                             ),
-                            //color: ,
                             child: Text(
-                              "Rent",
+                              post.category!,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12.sp,
@@ -207,18 +233,16 @@ class AdElement extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // if liked
                         SizedBox(
                           height: 21.sp,
                           width: 24.sp,
                           child: Image.asset(
-                            "assets/icons/filledHeart.png",
+                            post.id.isEven?"assets/icons/filledHeart.png": "assets/icons/outlineHeart.png",
                             fit: BoxFit.contain,
                           ),
                         ),
-                        //else
-                        //Image.asset("assets/icons/outlineHeart.png"),
-                        (Get.width * 0.16).horizontalSpace,
+                        //Image.asset(),
+                        0.16.sw.horizontalSpace,
                         //star
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -234,7 +258,7 @@ class AdElement extends StatelessWidget {
                         ),
                         //rating
                         Text(
-                          "4.5",
+                          post.avgRating.toString(),
                           style: TextStyle(
                             fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
@@ -244,7 +268,7 @@ class AdElement extends StatelessWidget {
                         4.sp.horizontalSpace,
                         //number of raters
                         Text(
-                          "(12)",
+                          "(${post.ratingNumber.toString()})",
                           style: TextStyle(
                             fontFamily: "Roboto",
                             fontWeight: FontWeight.normal,
@@ -254,7 +278,7 @@ class AdElement extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      "5 floors villa",
+                      post.title,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14.sp,
@@ -262,19 +286,20 @@ class AdElement extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "20-07-2021",
+                      post.date,
                       style: TextStyle(
                           fontFamily: "Roboto",
                           fontSize: 10.sp, color: HexColor("#999999")),
                     ),
                     Text(
-                      "Al Bukayriyah - Al Bukayriyah",
+                      "${post.country} - ${post.city}",
+                      overflow: TextOverflow.fade,
                       style: TextStyle(
                         fontSize: 14.sp,
                       ),
                     ),
                     Text(
-                      r"150,000$",
+                      formatter.format(post.totalPrice),
                       style: TextStyle(
                         fontFamily: "Roboto",
                         fontWeight: FontWeight.bold,

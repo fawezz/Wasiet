@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
 import 'package:wasiet/Controllers/DetailAdController.dart';
 import 'package:wasiet/Custom_widgets/ButtonOutline.dart';
 import 'package:wasiet/Custom_widgets/TechnicalInfoField.dart';
@@ -12,6 +13,7 @@ class DetailTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DetailAdController controller = Get.find();
+    var formatter = NumberFormat('#,###,###.00');
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Padding(
@@ -20,7 +22,7 @@ class DetailTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "150,000 Rial",
+              "${formatter.format(controller.post!.totalPrice)} Rial",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.sp,
@@ -34,16 +36,31 @@ class DetailTab extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 8.5),
                   child: Container(
                     //test which color
-                    height: Get.height * 0.028,
-                    width: Get.width * 0.1014,
+                    height: Get.height * 0.03,
+                    width: Get.width * 0.13,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: HexColor("#00B4EF"),
+                      color: (() {
+                        switch(controller.post!.category) {
+                          case "rent": {
+                            return HexColor("#00B4EF");
+                          }
+                          case "sell": {
+                            return HexColor("#FF4B70");
+                          }
+                          case "exchange": {
+                            return HexColor("#7951FF");
+                          }
+                          default: {
+                            return HexColor("#00B4EF");
+                          }
+                        }
+                      }()),
                       borderRadius: BorderRadius.circular(45),
                     ),
                     //color: ,
                     child: Text(
-                      "Rent",
+                      controller.post!.category,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 12.sp,
@@ -53,7 +70,7 @@ class DetailTab extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  "Ad number: 19",
+                  "Ad number: ${controller.post!.number}",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 10.sp,
@@ -70,7 +87,7 @@ class DetailTab extends StatelessWidget {
                 ),
                 6.w.horizontalSpace,
                 Text(
-                  "20-07-2021",
+                  controller.post!.date,
                   style: TextStyle(
                       fontFamily: "Roboto",
                       color: Colors.black,
@@ -81,7 +98,7 @@ class DetailTab extends StatelessWidget {
             ),
             5.h.verticalSpace,
             Text(
-              "Villa for sale in Holy Mecca",
+              controller.post!.title,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.sp,
@@ -104,7 +121,7 @@ class DetailTab extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "4.5",
+                  controller.post!.avgRating.toString(),
                   style: TextStyle(
                     fontFamily: "Roboto",
                     fontWeight: FontWeight.bold,
@@ -114,7 +131,7 @@ class DetailTab extends StatelessWidget {
                 4.sp.horizontalSpace,
                 //number of raters
                 Text(
-                  "(12)",
+                  "(${controller.post!.ratingNumber})",
                   style: TextStyle(
                     fontFamily: "Roboto",
                     fontWeight: FontWeight.normal,
@@ -139,7 +156,7 @@ class DetailTab extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Elbkiriyya - Saudi Arabia",
+                  "${controller.post!.country} - ${controller.post!.city}",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14.sp,
@@ -155,13 +172,13 @@ class DetailTab extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.bold),
             ),
-            const TechnicalInfoField(title: 'Estate type', value: 'Duplex Villa', isColored: true),
-            const TechnicalInfoField(title: 'Area', value: '250 m', isColored: false),
-            const TechnicalInfoField(title: 'meter squared price', value: '1500 Rial', isColored: true),
-            const TechnicalInfoField(title: 'number of rooms', value: '5', isColored: false),
-            const TechnicalInfoField(title: 'bathrooms', value: '2', isColored: true),
-            const TechnicalInfoField(title: 'Number of living rooms', value: '2', isColored: false),
-            const TechnicalInfoField(title: 'Age of the Estate', value: '3(y)', isColored: true),
+            TechnicalInfoField(title: 'Estate type', value: controller.post!.type, isColored: true),
+            TechnicalInfoField(title: 'Area', value: "${controller.post!.surface} m", isColored: false),
+            TechnicalInfoField(title: 'meter squared price', value: '${controller.post!.totalPrice} Rial', isColored: true),
+            TechnicalInfoField(title: 'number of rooms', value:  controller.post!.rooms.toString(), isColored: false),
+            TechnicalInfoField(title: 'bathrooms', value: controller.post!.bathrooms.toString(), isColored: true),
+            TechnicalInfoField(title: 'Number of living rooms', value: controller.post!.livingrooms.toString(), isColored: false),
+            TechnicalInfoField(title: 'Age of the Estate', value: '${controller.post!.age} (y)', isColored: true),
             24.h.verticalSpace,
             Text(
               "Description",
@@ -171,7 +188,7 @@ class DetailTab extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              "Lorem Ipsum has been the standard for formal text since the fifteenth century when an unknown printing press stacked a set of random letters taken from a text, to form a pamphlet as a guide or formal reference for these letters.",
+              controller.post!.description,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 14.sp,

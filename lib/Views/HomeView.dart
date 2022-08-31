@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/HomeNavController.dart';
 import 'package:wasiet/Custom_widgets/AdCard.dart';
 
 import '../Controllers/HomeTabController.dart';
+import '../Custom_widgets/PostList.dart';
 import 'TestScreen1.dart';
 import 'TestScreen2.dart';
 
@@ -13,7 +15,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomeTabController controller = Get.put(HomeTabController());
+    final HomeTabController controller = Get.find();
     Size size = MediaQuery.of(context).size;
 
     final double tabw = size.width * 0.1956;
@@ -240,26 +242,21 @@ class HomeView extends StatelessWidget {
                 ),
               ]),
         ),
+        HomeNavController.postList.isEmpty?
+        const SizedBox(
+            height: 50,
+            width: 50,
+            child: CircularProgressIndicator()):
                 Expanded(
                   child: TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
                     controller: controller.tabController,
                     children:  [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.sp),
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount:5,
-                            itemBuilder: (context, index) {
-                              return AdElement(isEditable: false,);
-                            }
-                        ),
-                      ),
-                      TestScreen2(),
-                      TestScreen1(),
-                      TestScreen2(),
-                      TestScreen1(),
+                      PostList(list: HomeNavController.postList),
+                      PostList(list: HomeNavController.postList.where((element) => element.category == "sell")),
+                      PostList(list: HomeNavController.postList.where((element) => element.category == "rent")),
+                      PostList(list: HomeNavController.postList.where((element) => element.category == "exchange")),
+                      const TestScreen1(),
                     ],
                   ),
                 )

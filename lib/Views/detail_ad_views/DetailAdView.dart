@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:wasiet/Controllers/DetailAdController.dart';
 import 'package:wasiet/Views/detail_ad_views/DetailTab.dart';
 import 'package:wasiet/Views/detail_ad_views/RatingTab.dart';
+import 'package:wasiet/models/PostModel.dart';
 
 class DetailAdView extends StatelessWidget {
   const DetailAdView({Key? key}) : super(key: key);
@@ -14,7 +15,8 @@ class DetailAdView extends StatelessWidget {
     final double tabw = Get.width * 0.413;
     final double tabh = Get.height * 0.0375;
     final tabfontsize = 14.sp;
-    final DetailAdController controller = Get.put(DetailAdController());
+    final DetailAdController controller = Get.find();
+    controller.indicator.value = 1;
 
     return SafeArea(
         child: Scaffold(
@@ -94,22 +96,35 @@ class DetailAdView extends StatelessWidget {
                                   width: Get.width,
                                   height: 0.30.sh,
                                   child: PageView.builder(
-                                      itemCount: controller.images.length,
+                                      itemCount: controller.post?.pictures.length,
                                       pageSnapping: true,
                                       controller: controller.pageController,
                                       physics: const BouncingScrollPhysics(),
                                       onPageChanged: (page) {
                                         controller.updateIndicator(page);
                                       },
-                                      itemBuilder: (context, pagePosition) {
+                                      itemBuilder: (context, imageIndex) {
                                         return Container(
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(20),
                                             image: DecorationImage(
                                               fit: BoxFit.fill,
                                               image:
-                                              Image.network(controller.images[pagePosition])
-                                                  .image,
+                                              Image.network(
+                                                  controller.post!.pictures.elementAt(imageIndex),
+                                                loadingBuilder: (BuildContext context, Widget child,
+                                                    ImageChunkEvent? loadingProgress) {
+                                                  if (loadingProgress == null) return child;
+                                                  return Center(
+                                                    child: CircularProgressIndicator(
+                                                      value: loadingProgress.expectedTotalBytes != null
+                                                          ? loadingProgress.cumulativeBytesLoaded /
+                                                          loadingProgress.expectedTotalBytes!
+                                                          : null,
+                                                    ),
+                                                  );
+                                                },
+                                              ).image,
                                             ),
                                           ),
                                         );
@@ -127,7 +142,7 @@ class DetailAdView extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Obx(() => Text(
-                                        "${controller.indicator}/${controller.images.length}",
+                                        "${controller.indicator}/${controller.post!.pictures.length}",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -238,47 +253,57 @@ class DetailAdView extends StatelessWidget {
                           CircleAvatar(
                             radius: 27.sp,
                             foregroundImage:
-                            Image.asset("assets/icons/seller.jpg").image,
+                            Image.network(controller.post!.sellerPicture).image,
                           ),
                           10.w.horizontalSpace,
                           Text(
-                            "foulen ben foulen",
+                            controller.post!.userName,
                             style: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const Spacer(),
-                          Container(
-                            height: 55.h,
-                            width: 69.w,
-                            decoration: BoxDecoration(
-                              color: HexColor("##0066B8"),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(10.w),
-                              child: Image.asset(
-                                "assets/icons/phone.png",
-                                height: 26.w,
-                                width: 26.w,
+                          GestureDetector(
+                            onTap: (){
+                              controller.launchUri("tel:94086751");
+                            },
+                            child: Container(
+                              height: 55.h,
+                              width: 69.w,
+                              decoration: BoxDecoration(
+                                color: HexColor("##0066B8"),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.w),
+                                child: Image.asset(
+                                  "assets/icons/phone.png",
+                                  height: 26.w,
+                                  width: 26.w,
+                                ),
                               ),
                             ),
                           ),
                           10.sp.horizontalSpace,
-                          Container(
-                            height: 55.h,
-                            width: 69.w,
-                            decoration: BoxDecoration(
-                              color: HexColor("#00B4EF"),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(10.w),
-                              child: Image.asset(
-                                "assets/icons/message.png",
-                                height: 26.w,
-                                width: 26.w,
+                          GestureDetector(
+                            onTap: (){
+                              controller.launchUri("sms:94086751");
+                            },
+                            child: Container(
+                              height: 55.h,
+                              width: 69.w,
+                              decoration: BoxDecoration(
+                                color: HexColor("#00B4EF"),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.w),
+                                child: Image.asset(
+                                  "assets/icons/message.png",
+                                  height: 26.w,
+                                  width: 26.w,
+                                ),
                               ),
                             ),
                           ),

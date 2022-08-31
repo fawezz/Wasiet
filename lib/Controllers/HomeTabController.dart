@@ -7,6 +7,7 @@ class HomeTabController extends GetxController with GetSingleTickerProviderState
   late TabController tabController;
 
 
+
   void updateSelectedIndex() {
     selectedTabIndex.value = tabController.index;
   }

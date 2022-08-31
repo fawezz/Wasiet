@@ -23,7 +23,7 @@ class RatingAndComment extends StatelessWidget {
                 CircleAvatar(
                   radius: 27.sp,
                   foregroundImage:
-                  Image.asset(userImage).image,
+                  Image.network(userImage).image,
                 ),
                 10.w.horizontalSpace,
                 Column(

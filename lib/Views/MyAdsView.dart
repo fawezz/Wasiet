@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wasiet/Controllers/HomeNavController.dart';
 
 import '../Controllers/MyAdsController.dart';
 import '../Custom_widgets/AdCard.dart';
@@ -124,7 +125,7 @@ class MyAdsView extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount:2,
                       itemBuilder: (context, index) {
-                        return AdElement(isEditable: true,);
+                        return AdElement(isEditable: true, post: HomeNavController.postList.last);
                       },
                       shrinkWrap: true,
                   ),]

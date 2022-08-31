@@ -12,12 +12,13 @@ class RatingModel {
       this._rating, this._comment,);
 
   RatingModel.fromJson(Map<String, dynamic> json) {
-    _postId = json['postId'];
-    _userName = json['userName'];
-    _userImage = json['userImage'];
-    _date = json['_date'];
-    _rating = json['rating'];
-    _comment = json['comment'];
+    _postId = json['id'];
+    _userName = json['name'];
+    //_userImage = json['userImage'];
+    _userImage = 'https://picsum.photos/400/400';
+    _date = json['date'];
+    _rating = json['stars'];
+    _comment = json['description'];
   }
 
   String get userImage => _userImage;

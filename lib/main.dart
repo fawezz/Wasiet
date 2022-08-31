@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:wasiet/Controllers/HomeTabController.dart';
 import 'package:wasiet/Views/detail_ad_views/DetailAdView.dart';
 import 'package:wasiet/Views/MyAdsView.dart';
 import 'package:wasiet/Views/MyComplaintsView.dart';
@@ -24,6 +25,7 @@ import 'Views/new_ad_views/NewAdNavigationView.dart';
 
 Future<void> main() async {
   await GetStorage.init();
+  final HomeTabController controller = Get.put(HomeTabController());
   runApp(const MyApp());
 }
 
