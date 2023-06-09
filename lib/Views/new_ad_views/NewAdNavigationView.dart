@@ -146,15 +146,16 @@ class NewAdNavigationView extends StatelessWidget {
                       children: [
                         newAdController.stepIndex.value != 0 ?
                         ButtonOutline(text: "Previous",
+                        width: Get.width * 0.4,
                           function: () => newAdController.prevStepIndex(),
                         ):
                         SizedBox(
-                          width: Get.width *0.422,
+                          width: Get.width *0.4,
                           height: Get.height* 0.07
                         ),
-                        16.w.horizontalSpace,
+                        Spacer(),
                         Container(
-                          width: Get.width * 0.422,
+                          width: Get.width * 0.4,
                           height: Get.height * 0.07,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
